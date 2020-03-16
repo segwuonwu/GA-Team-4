@@ -1,10 +1,10 @@
 # GA-Team-4 Project 3
 
 ## Team Members
-[Dylan Lewis](https://github.com/dlew253)
-[Shawhien Sohrabi](https://github.com/shawhien)
-[Solomon Egwuonwu](https://github.com/segwuonwu)
-[Melissa Young](https://github.com/melissay94)
+ - [Dylan Lewis](https://github.com/dlew253)
+ - [Shawhien Sohrabi](https://github.com/shawhien)
+ - [Solomon Egwuonwu](https://github.com/segwuonwu)
+ - [Melissa Young](https://github.com/melissay94)
 
 ## General Plan
 ### Problem to Solve: 
@@ -19,25 +19,25 @@ We are creating a web application that would allow volunteer organizations to cr
 - People who want to volunteer and make a difference in their community.
 
 #### User Stories
-*User Name:* Feed the hungry
-*Role:* Organization
-*Personality:* We are an organization looking for volunteers to help us with our monthly feed the hungry event. We started this organization as a way of giving back to our beloved community and we’ve been doing this for 2 years.
-*How our product helps:* Our product will help connect organizations such as feed the hungry with people who want to volunteer and also give user’s the opportunity to find an organization that they feel comfortable in joining.
+*User Name:* Feed the hungry  
+*Role:* Organization  
+*Personality:* We are an organization looking for volunteers to help us with our monthly feed the hungry event. We started this organization as a way of giving back to our beloved community and we’ve been doing this for 2 years.  
+*How our product helps:* Our product will help connect organizations such as feed the hungry with people who want to volunteer and also give user’s the opportunity to find an organization that they feel comfortable in joining.  
 
-*User Name:* Tina Teenager
-*Role:* User
-*Personality:* I am a senior girl scout going for my bronze badge, and need a certain number of volunteer hours to earn it. I need a way to easily track where I am volunteering, and how many hours I’ve volunteered there.
-*How our product helps:* Our product will list joined organizations and events for the user to view at any time, along with calculating total hours they have already volunteered.
+*User Name:* Tina Teenager  
+*Role:* User  
+*Personality:* I am a senior girl scout going for my bronze badge, and need a certain number of volunteer hours to earn it. I need a way to easily track where I am volunteering, and how many hours I’ve volunteered there.  
+*How our product helps:* Our product will list joined organizations and events for the user to view at any time, along with calculating total hours they have already volunteered.  
 
-*User Name:* Tommy Twoshoes
-*Role:* User
-*Personality:* My name is Tommy, I’m a 17 year old high school junior looking to get involved with youth sports coaching and refereeing this summer in the North Seattle area. I moved to the area last spring and was actively involved with Greensboro, NC-area youth soccer organizations.
-*How our product helps:* Charity Organizations that host events to do good and people who want to volunteer and make a difference in their community. Our web application would allow organizations to create pages and post events to their page. Volunteers would also be able to create accounts and then be free to sign up and join various organizations to follow when they create events.
+*User Name:* Tommy Twoshoes  
+*Role:* User  
+*Personality:* My name is Tommy, I’m a 17 year old high school junior looking to get involved with youth sports coaching and refereeing this summer in the North Seattle area. I moved to the area last spring and was actively involved with Greensboro, NC-area youth soccer organizations.  
+*How our product helps:* Charity Organizations that host events to do good and people who want to volunteer and make a difference in their community. Our web application would allow organizations to create pages and post events to their page. Volunteers would also be able to create accounts and then be free to sign up and join various organizations to follow when they create events.  
 
-*User Name:* Paul Peterson
-*Role:* User
-*Personality:*  I am a long standing resident of my community and want to start giving back to help it grow. I am looking for an easy way to find and sign up for volunteering events in my area to start giving back to my community.
-*How our product helps:* Our product will have organizations that will be posting events that are looking for volunteers so that people like Paul can sign up and help their local communities.
+*User Name:* Paul Peterson  
+*Role:* User  
+*Personality:*  I am a long standing resident of my community and want to start giving back to help it grow. I am looking for an easy way to find and sign up for volunteering events in my area to start giving back to my community.  
+*How our product helps:* Our product will have organizations that will be posting events that are looking for volunteers so that people like Paul can sign up and help their local communities.  
 
 ### MVP Scope
 - Sign up flow: Volunteers
@@ -69,29 +69,29 @@ We are creating a web application that would allow volunteer organizations to cr
 8. [Messege Bird API](https://messagebird.com/en/)
 
 ### Site Map
-![Site Map](/readme_images/project_site_map.png)
+![Site Map](./readme_images/project_site_map.png)
 
 ### Wire Frames
 Landing Page
-[Landing Wire Frame](/readme_images/landing_page.png)
+![Landing Wire Frame](./readme_images/landing_page.png)
 
 Sign Up Page
-[Sign Up Wire Frame](/readme_images/signup_page.png)
+![Sign Up Wire Frame](./readme_images/signup_page.png)
 
 Login Page
-[Login Wire Frame](/readme_images/login_page.png)
+![Login Wire Frame](./readme_images/login_page.png)
 
 User Home Page
-[User Home Page Wire Frame](/readme_images/user_home_page.png)
+![User Home Page Wire Frame](./readme_images/user_home_page.png)
 
 Search Results Page
-[Search Results Page](/readme_images/search_results.png)
+![Search Results Page](./readme_images/search_results.png)
 
 Organization Dashboard Page
-[Organization Dashboard Wire Frame](/readme_images/organization_page.png)
+![Organization Dashboard Wire Frame](./readme_images/organization_page.png)
 
 Organization Create Event Page
-[Organization Create Event Page](/readme_images/create_event_page.png)
+![Organization Create Event Page](./readme_images/create_event_page.png)
 
 ### Routes
 | Verb | URL | Action | Description | Redirect? |
