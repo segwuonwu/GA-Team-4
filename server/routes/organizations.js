@@ -41,3 +41,22 @@ router.post('/', (req, res) => {
     });
 });
 
+// Edit an event
+router.post('/edit', (req, res) => {
+    
+})
+
+// Delete an event
+router.delete('/:id', (req, res) => {
+    console.log('---Delete route');
+    db.Event.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(() => {
+        res.redirect('/user');
+    })
+    .catch(err => res.send({message: 'Error deleting event', err}))
+})
+    

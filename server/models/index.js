@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // Connect to Mongo database
 mongoose.connect(
-    process.env.MONGO_URL, {
+    process.env.MONGO_URL || 'mongodb://localhost:27017/organizationDb',{
         useNewUrlParser: true,
         useFindAndModify: true,
         useCreateIndex: true
