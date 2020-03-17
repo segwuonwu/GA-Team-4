@@ -19,10 +19,7 @@ const organizationSchema = new mongoose.Schema({
         type: String,
         default: 'http://www.placecage.com/200/200'
     }
-})
-
-// Use schema to create model
-const Organization = mongoose.model('organization', organizationSchema)
+});
 
 // Export organization
 module.exports = mongoose.model('organization', organizationSchema)
