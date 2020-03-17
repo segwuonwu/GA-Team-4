@@ -23,7 +23,7 @@ const organizationSchema = new mongoose.Schema({
 })
 
 // Use schema to create model
-const organization = mongoose.model('organization', organizationSchema)
+const Organization = mongoose.model('organization', organizationSchema)
 
 // Export organization Model
-module.exports = organization;
+module.exports = Organization;

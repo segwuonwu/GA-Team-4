@@ -22,3 +22,5 @@ mongoose.connect(
   // Require other models, and export them
   // NOTE: Our files can have multiple module.exports statements!
   // Make sure to export all models
+module.exports.User = require('./user');
+module.exports.Organization = require('./organization');
