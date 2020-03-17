@@ -21,5 +21,28 @@ const organizationSchema = new mongoose.Schema({
     }
 });
 
+//Using bcrypt to hash the password
+userSchema.pre('save', function(next) {
+    if (this.isNew) {
+        this.password = bcypt.hashSync(this.password, 12)
+    }
+
+    next()
+});
+
+//Prevent password from getting sent out with the rest of the data
+userSchema.set('toJSON', {
+    transform: (doc, organization) => {
+        delete organization.password
+        delete organization.__v
+        return organization
+    }
+});
+
+// Helper function to compare the password hashes
+userSchema.methods.isValidPassword = function (typedPassword) {
+    return bcrypt.compareSync(typedPassword, this.password)
+};
+
 // Export organization
 module.exports = mongoose.model('organization', organizationSchema)

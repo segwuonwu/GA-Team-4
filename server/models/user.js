@@ -44,7 +44,7 @@ userSchema.set('toJSON', {
 // Helper function to compare the password hashes
 userSchema.methods.isValidPassword = function (typedPassword) {
     return bcrypt.compareSync(typedPassword, this.password)
-}''
+}
 
 //Export user
 module.exports = mongoose.model('User', userSchema)
