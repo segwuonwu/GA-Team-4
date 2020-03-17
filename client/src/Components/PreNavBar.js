@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { AppBar } from '@material-ui/core';
 
 //Logo
 //Sign In
@@ -7,7 +7,21 @@ import React from 'react';
 //Sign Up Org
 function PreNavBar() {
     return (
-      <div></div>
+      <div>
+       <AppBar position="static">
+         <Toolbar>
+            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+              <MenuIcon />
+              </IconButton>
+              <Typography variant="h4" className={classes.title}>
+                GiveBack
+              </Typography>
+            <Button color="inherit">Login</Button>
+            <Button color="inherit">Sign Up</Button>
+      </Toolbar>
+    </AppBar>
+
+      </div>
     );
   }
   

@@ -1,13 +1,15 @@
 import React from 'react';
 
+//replace H1 with logo
 
-// What we do
-// Stock photos 
-// Logo
 
 function Hero() {
     return (
-      <div></div>
+      <div>
+        <h1>GiveBack</h1>
+        <img src="https://placekitten.com/600/600" />
+        <h3>Connecting volunteers with their communities</h3>
+      </div>
     );
   }
   
