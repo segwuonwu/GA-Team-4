@@ -63,4 +63,9 @@ router.post('/signup', (req, res) => {
     })
 })
 
-//Work on profile 
+
+router.get('/profile', (req, res) => {
+    res.send({ message: 'Secret message for people who are logged in only! '}) 
+});
+
+module.exports = router;
