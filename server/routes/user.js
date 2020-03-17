@@ -18,4 +18,20 @@ router.get('/:id', (req, res) => {
     }).catch(err => res.send({message: 'Error in getting one mesuems', err}))
 })
 
+// Delete an event
+router.delete('/:id', (req, res) => {
+    console.log('---Delete route');
+    db.Event.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(() => {
+        res.redirect('/user');
+    })
+    .catch(err => res.send({message: 'Error deleting event', err}))
+})
+    
+
+
 module.exports = router;
