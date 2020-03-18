@@ -1,15 +1,17 @@
+// Require Mongoose node module
+const mongoose = require('mongoose');
 let bcrypt = require('bcryptjs')
-let mongoose = require('mongoose')
 
-//Create User Schema
-const userSchema = mongoose.Schema({
+// Create user Schema
+const userSchema = new mongoose.Schema({
+
     firstname: {
         type: String,
         required: true
     },
     lastname: {
         type: String,
-        required: true,
+        required: true
     },
     password: {
         type: String,
@@ -51,7 +53,7 @@ userSchema.methods.isValidPassword = function (typedPassword) {
 };
 
 // Use schema to create model
-const user = mongoose.model('user', userSchema)
+const User = mongoose.model('user', userSchema)
 
 // Export user model
-module.exports = user;
+module.exports = User;
