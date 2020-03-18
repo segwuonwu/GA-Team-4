@@ -1,5 +1,6 @@
 // Require Mongoose node module
 const mongoose = require('mongoose');
+let bcrypt = require('bcryptjs');
 
 // Create organization Schema
 const organizationSchema = new mongoose.Schema({
@@ -10,12 +11,35 @@ const organizationSchema = new mongoose.Schema({
     
     image: {
         type: String,
-        default: 'http://www.placekitten.com/200/200'
+        default: 'http://www.placecage.com/200/200'
     }
-})
+});
+
+//Using bcrypt to hash the password
+organizationSchema.pre('save', function(next) {
+    if (this.isNew) {
+        this.password = bcypt.hashSync(this.password, 12)
+    }
+
+    next()
+});
+
+//Prevent password from getting sent out with the rest of the data
+organizationSchema.set('toJSON', {
+    transform: (doc, organization) => {
+        delete organization.password
+        delete organization.__v
+        return organization
+    }
+});
+
+// Helper function to compare the password hashes
+organizationSchema.methods.isValidPassword = function (typedPassword) {
+    return bcrypt.compareSync(typedPassword, this.password)
+};
 
 // Use schema to create model
 const Organization = mongoose.model('organization', organizationSchema)
 
-// Export organization Model
+// Export organization model
 module.exports = Organization;

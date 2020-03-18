@@ -3,36 +3,33 @@ const mongoose = require('mongoose');
 
 // Create event Schema
 const eventSchema = new mongoose.Schema({
-    name: {
+    eventname: {
         type: String,
         required: true
     },
-    date: {
+    eventdate: {
         type: String,
         required: true
     },
-    city: {
+    eventlocation: {
         type: String,
         required: true
     },
-    state: {
+    website: {
+        type: String
+    },
+    details: {
         type: String,
         required: true
     },
-    location: {
-        type: String,
-        required: true
-    },
-    website: String,
-    details: String,
     organization: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'organization'
     }
-})
+});
 
 // Use schema to create model
 const Event = mongoose.model('event', eventSchema)
 
-// Export event Model
+// Export event model
 module.exports = Event;
