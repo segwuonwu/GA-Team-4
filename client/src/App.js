@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from "react";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import PreAuthNav from "./Components/PreNavBar";
 import PostAuthNav from "./Components/LogNavBar";
@@ -21,9 +22,15 @@ const theme = createMuiTheme({
 });
 
 function App() {
+  const [authStatus, setAuthStatus] = useState(false);
+  function setNav() {
+    return authStatus ? <PostAuthNav /> : <PreAuthNav />;
+  }
   return (
     <div>
       <ThemeProvider theme={theme}>
+        {setNav()}
+        <Footer />
       </ThemeProvider>
     </div>
   );
