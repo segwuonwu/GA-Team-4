@@ -22,7 +22,6 @@ function App() {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <Home />
       </ThemeProvider>
     </div>
   );

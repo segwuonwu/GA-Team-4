@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper
   }
 }));
-
+// Expected props is an object
 function OrgComponent(props) {
   const classes = useStyles();
     return (
@@ -21,8 +21,8 @@ function OrgComponent(props) {
           </Avatar>
         </ListItemAvatar>
         <ListItemText 
-          primary={props.name}
-          secondary={props.description} />
+          primary={props.organization.name}
+          secondary={props.organization.description} />
       </ListItem>
     );
   }
