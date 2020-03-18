@@ -1,8 +1,9 @@
-let mongoose = require('mongoose')
+// Require Mongoose node module
+const mongoose = require('mongoose');
 
-//Create event Schema
-const eventSchema = mongoose.Schema({
-    name: {
+// Create event Schema
+const eventSchema = new mongoose.Schema({
+    eventname: {
         type: String,
         required: true
     },
@@ -14,8 +15,8 @@ const eventSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    eventwebsite: {
-        type: string
+    website: {
+        type: String
     },
     details: {
         type: String,
