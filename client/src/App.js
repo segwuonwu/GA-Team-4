@@ -1,6 +1,8 @@
 import React from 'react';
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import Home from "./pages/Home.js";
+import PreAuthNav from "./Components/PreNavBar";
+import PostAuthNav from "./Components/LogNavBar";
+import Footer from "./Components/Footer";
 import "./scss/App.scss";
 
 const theme = createMuiTheme({
