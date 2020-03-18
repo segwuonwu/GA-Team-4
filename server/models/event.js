@@ -2,7 +2,7 @@ let mongoose = require('mongoose')
 
 //Create event Schema
 const eventSchema = mongoose.Schema({
-    orgname: {
+    name: {
         type: String,
         required: true
     },
@@ -20,6 +20,10 @@ const eventSchema = mongoose.Schema({
     details: {
         type: String,
         required: true
+    },
+    organization: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'organization'
     }
 });
 

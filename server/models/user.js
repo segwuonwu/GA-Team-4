@@ -21,6 +21,10 @@ const userSchema = mongoose.Schema({
         required: true,
         unique: true
     },
+    image: {
+        type: String,
+        default: 'http://www.placecage.com/200/200'
+    }
 });
 
 //using bcrypt to hash the password
@@ -44,7 +48,7 @@ userSchema.set('toJSON', {
 // Helper function to compare the password hashes
 userSchema.methods.isValidPassword = function (typedPassword) {
     return bcrypt.compareSync(typedPassword, this.password)
-}
+};
 
 //Export user
 module.exports = mongoose.model('User', userSchema)
