@@ -27,5 +27,8 @@ const eventSchema = mongoose.Schema({
     }
 });
 
-//Export event
-module.exports = mongoose.model('Event', eventSchema)
+// Use schema to create model
+const Event = mongoose.model('event', eventSchema)
+
+// Export event model
+module.exports = Event;

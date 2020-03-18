@@ -50,5 +50,8 @@ userSchema.methods.isValidPassword = function (typedPassword) {
     return bcrypt.compareSync(typedPassword, this.password)
 };
 
-//Export user
-module.exports = mongoose.model('User', userSchema)
+// Use schema to create model
+const user = mongoose.model('user', userSchema)
+
+// Export user model
+module.exports = user;

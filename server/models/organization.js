@@ -44,5 +44,8 @@ organizationSchema.methods.isValidPassword = function (typedPassword) {
     return bcrypt.compareSync(typedPassword, this.password)
 };
 
-// Export organization
-module.exports = mongoose.model('organization', organizationSchema)
+// Use schema to create model
+const Organization = mongoose.model('organization', organizationSchema)
+
+// Export organization model
+module.exports = Organization;
