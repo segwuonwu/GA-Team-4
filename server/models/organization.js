@@ -7,15 +7,7 @@ const organizationSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
+    
     image: {
         type: String,
         default: 'http://www.placekitten.com/200/200'
