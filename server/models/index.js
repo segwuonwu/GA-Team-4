@@ -24,3 +24,4 @@ mongoose.connect(
   // Make sure to export all models
 module.exports.User = require('./user');
 module.exports.Organization = require('./organization');
+module.exports.Event = require('./event');

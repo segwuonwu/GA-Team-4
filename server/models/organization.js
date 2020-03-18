@@ -18,7 +18,7 @@ const organizationSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        default: 'http://www.placekitten.com/600/400'
+        default: 'http://www.placekitten.com/200/200'
     }
 })
 

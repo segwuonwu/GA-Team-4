@@ -37,26 +37,44 @@ router.post('/', (req, res) => {
     })
     .catch(err => {
         console.log('Error Message', err);
-        res.send({message :'An error occured', err});
+        res.send({message :'An error occured creating new event', err});
     });
 });
 
-// Edit an event
-router.post('/edit', (req, res) => {
+// Edit event form
+router.get('/:id/edit', (req, res) => {
+    db.Organization.findById(req.params.id)
+    .then(event => {
+        res.render('organisations/edit', { event: event })
+    })
+})
+
+// update an event
+router.put('/:id', (req, res) => {
+    db.Organization.findById(req.params.id)
+    .then(event => {
+        return event.update(req.body);
+    }).then(event => {
+        res.redirect(`/organizations/${event.id}`)
+    }).catch(err => {
+        console.log('Error Message', err);
+        res.send({message :'An error occured while updating event', err});
+    });
     
 })
 
 // Delete an event
 router.delete('/:id', (req, res) => {
     console.log('---Delete route');
-    db.Event.destroy({
+    db.Organization.destroy({
         where: {
             id: req.params.id
         }
     })
     .then(() => {
-        res.redirect('/user');
+        res.redirect('/organization');
     })
     .catch(err => res.send({message: 'Error deleting event', err}))
 })
     
+module.exports = router;

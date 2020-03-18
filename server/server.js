@@ -10,14 +10,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
 
-// Landing page route
-app.get('/', (req, res) =>{
-  res.render('landing');
-});
-
 // Declare controllers/route
 app.use('/users', require('./routes/users'))
 app.use('/organizations', require('./routes/organizations'))
+
+// Landing page route
+// app.get('/', (req, res) =>{
+//   res.send('landing');
+// });
+
 
 // Make 404 route
 app.get('/', (req, res) => {
