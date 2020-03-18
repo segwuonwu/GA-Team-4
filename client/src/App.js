@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from "react";
+import { BrowserRouter as Router} from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import PreAuthNav from "./Components/PreNavBar";
 import PostAuthNav from "./Components/LogNavBar";
@@ -27,12 +28,14 @@ function App() {
     return authStatus ? <PostAuthNav /> : <PreAuthNav />;
   }
   return (
-    <div>
-      <ThemeProvider theme={theme}>
-        {setNav()}
-        <Footer />
-      </ThemeProvider>
-    </div>
+    <Router>
+      <div>
+        <ThemeProvider theme={theme}>
+          {setNav()}
+          <Footer />
+        </ThemeProvider>
+      </div>
+    </Router>
   );
 }
 

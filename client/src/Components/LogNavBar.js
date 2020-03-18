@@ -7,7 +7,7 @@ function LogNavBar() {
     return (
       <AppBar position="static">
         <Toolbar>
-          <Logo link="/" />
+          <Logo link="/home" />
           <Searchbar />
           <Button>Profile</Button>
           <Button>Logout</Button>
