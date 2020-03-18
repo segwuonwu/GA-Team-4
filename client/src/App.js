@@ -1,7 +1,5 @@
 import React from 'react';
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import './scss/App.scss';
-import Logo from "./Components/Logo";
 
 const theme = createMuiTheme({
   palette: {
@@ -20,11 +18,10 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-    <div className="App">
-      <Logo link="/" />
+    <div>
+      <ThemeProvider theme={theme}>
+      </ThemeProvider>
     </div>
-    </ThemeProvider>
   );
 }
 

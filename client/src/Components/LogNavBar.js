@@ -1,11 +1,18 @@
 import React from 'react';
-//Logo
-//Event Search Bar and Button
-//Profile
-//Log out
+import { AppBar, Toolbar, Button } from "@material-ui/core";
+import Searchbar from "./Searchbar";
+import Logo from "./Logo";
+
 function LogNavBar() {
     return (
-      <div></div>
+      <AppBar position="static">
+        <Toolbar>
+          <Logo link="/" />
+          <Searchbar />
+          <Button>Profile</Button>
+          <Button>Logout</Button>
+        </Toolbar>
+      </AppBar>
     );
   }
   
