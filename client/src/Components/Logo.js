@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Link 
 } from "react-router-dom";
+import "../scss/App.scss";
 import logo_img from "../assets/giveback_logo.png";
 
 function Logo(props) {
@@ -10,7 +11,7 @@ function Logo(props) {
   return (
     <div>
       <Router>
-        <img src={logo_img} className="App-logo" alt="logo" />
+        <img src={logo_img} className="logo" alt="logo" />
         <Link to={props.link} />
       </Router>
     </div>
