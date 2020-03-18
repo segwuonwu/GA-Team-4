@@ -4,6 +4,7 @@ let bcrypt = require('bcryptjs')
 
 // Create user Schema
 const userSchema = new mongoose.Schema({
+
     firstname: {
         type: String,
         required: true
@@ -12,23 +13,47 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    password: {
+        type: String,
+        requied: true,
+        minlength: 8
+    },
     email: {
         type: String,
         required: true,
         unique: true
     },
-    password: {
-        type: String,
-        required: true
-    },
     image: {
         type: String,
-        default: 'http://www.placekitten.com/200/200'
+        default: 'http://www.placecage.com/200/200'
     }
-})
+});
+
+//using bcrypt to hash the password
+userSchema.pre('save', function(next) {
+    if (this.isNew) {
+        this.password = bcypt.hashSync(this.password, 12)
+    }
+
+    next()
+});
+
+//Prevent password from getting sent out with the rest of the data
+userSchema.set('toJSON', {
+    transform: (doc, user) => {
+        delete user.password
+        delete user.__v
+        return user
+    }
+});
+
+// Helper function to compare the password hashes
+userSchema.methods.isValidPassword = function (typedPassword) {
+    return bcrypt.compareSync(typedPassword, this.password)
+};
 
 // Use schema to create model
-const user = mongoose.model('user', userSchema)
+const User = mongoose.model('user', userSchema)
 
-// Export user Model
-module.exports = user;
+// Export user model
+module.exports = User;
