@@ -1,13 +1,29 @@
-import React from 'react';
+import React from "react";
+import { ListItem, ListItemText, ListItemAvatar, Avatar } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import PlaceholderIcon from "@material-ui/icons/Person"
 
-//SideList
-// Org Name
-// Org description
-// link to Org
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: "100%",
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper
+  }
+}));
 
-function OrgComponent() {
+function OrgComponent(props) {
+  const classes = useStyles();
     return (
-      <div></div>
+      <ListItem className={classes.root}>
+        <ListItemAvatar>
+          <Avatar>
+            <PlaceholderIcon />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText 
+          primary={props.name}
+          secondary={props.description} />
+      </ListItem>
     );
   }
   
