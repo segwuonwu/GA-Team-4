@@ -1,7 +1,7 @@
 // Require Mongoose node module
 const mongoose = require('mongoose');
 
-//Create event Schema
+// Create event Schema
 const eventSchema = new mongoose.Schema({
     eventname: {
         type: String,
