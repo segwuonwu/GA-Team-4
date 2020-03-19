@@ -4,9 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/sass/styles.scss";
 import moment from "moment";
-import LogNavBar from "../Components/LogNavBar";
 import SideList from "../Components/SideList";
-import Footer from "../Components/Footer";
 
 const localizer = momentLocalizer(moment);
 
@@ -21,7 +19,6 @@ function Home() {
 
   return (
     <div>
-      <LogNavBar />
       <Typography>
         Hello User!
       </Typography>
@@ -37,7 +34,6 @@ function Home() {
         </Grid>
       </Grid>
       <SideList listType="organization" organizations={[]} />
-      <Footer />
     </div>
   );
 }

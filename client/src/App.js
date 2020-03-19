@@ -24,7 +24,7 @@ const theme = createMuiTheme({
 });
 
 function App() {
-  const [authStatus, setAuthStatus] = useState(false);
+  const [authStatus, setAuthStatus] = useState(true);
   function setNav() {
     return authStatus ? <PostAuthNav /> : <PreAuthNav />;
   }
