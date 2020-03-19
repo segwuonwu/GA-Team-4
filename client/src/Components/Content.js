@@ -10,7 +10,7 @@ import SearchResults from "../pages/SearchResultsUser";
 function Content() {
   return(
     <Switch>
-      <Route path="" exact={true} component={Landing} />
+      <Route path="/" exact={true} component={Landing} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
       <Route path="/home" component={Home} />
