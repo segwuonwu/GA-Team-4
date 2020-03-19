@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
     }
 
     Object.keys(newEvent).forEach(key => (newEvent[key] == '') && delete newEvent[key]);
-    db.Organization.create(newEvent)
+    db.Event.create(newEvent)
     .then(event => {
         res.send(event);
     })
@@ -66,13 +66,11 @@ router.put('/:id', (req, res) => {
 // Delete an event
 router.delete('/:id', (req, res) => {
     console.log('---Delete route');
-    db.Organization.destroy({
-        where: {
-            id: req.params.id
-        }
+    db.Organization.deleteOne({
+       _id: req.params.id
     })
     .then(() => {
-        res.redirect('/organization');
+        res.redirect('/organizations');
     })
     .catch(err => res.send({message: 'Error deleting event', err}))
 })
