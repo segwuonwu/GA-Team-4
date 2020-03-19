@@ -21,13 +21,13 @@ router.get('/:id', (req, res) => {
 //Take form data to add a new events
 router.post('/', (req, res) => {
     let newEvent = {
-        name: req.body.name,
-        date: req.body.date,
+        eventname: req.body.eventname,
+        eventdate: req.body.eventdate,
+        eventlocation: req.body.eventlocation,
         city: req.body.city,
         state: req.body.state,
-        location: req.body.location,
-        webUrl: req.body.website,
-        detail: req.body.detail
+        website: req.body.website,
+        details: req.body.details
     }
 
     Object.keys(newEvent).forEach(key => (newEvent[key] == '') && delete newEvent[key]);
