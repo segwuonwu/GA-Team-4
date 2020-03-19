@@ -10,7 +10,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 
-const classes = useStyles()
 
 function SignUp() {
 
@@ -33,6 +32,7 @@ function SignUp() {
       margin: theme.spacing(3, 0, 2),
     },
   }));
+  const classes = useStyles()
 
   return (
    
