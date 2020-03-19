@@ -4,6 +4,7 @@ import { BrowserRouter as Router} from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import PreAuthNav from "./Components/PreNavBar";
 import PostAuthNav from "./Components/LogNavBar";
+import Content from "./Components/Content";
 import Footer from "./Components/Footer";
 import "./scss/App.scss";
 
@@ -32,6 +33,7 @@ function App() {
       <div>
         <ThemeProvider theme={theme}>
           {setNav()}
+          <Content />
           <Footer />
         </ThemeProvider>
       </div>
