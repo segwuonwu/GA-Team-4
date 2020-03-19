@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import { makeStyles, fade, InputBase, IconButton } from '@material-ui/core';
 import useSearch from "../hooks/SearchHook";
@@ -34,8 +34,6 @@ function Searchbar() {
   
   const {input, handleInputChange, handleSubmit} = useSearch(sendSearchQuery);
 
-  if (query) return <Redirect to={`/search/?query=${input}`} />;
-
   return (
     <div className={classes.search}>
       <InputBase
@@ -49,7 +47,8 @@ function Searchbar() {
         <IconButton 
           className={classes.searchIcon} 
           aria-label="search"
-          onClick={handleSubmit}>
+          component={Link}
+          to={`/search?query=${input}`}>
           <SearchIcon />
         </IconButton>
     </div>
