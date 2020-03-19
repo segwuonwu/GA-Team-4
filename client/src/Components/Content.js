@@ -7,7 +7,7 @@ import Signup from "../pages/SignupUser";
 function Content() {
   return(
     <Switch>
-      <Route path="/" component={Landing} />
+      <Route path="" exact={true} component={Landing} />
       <Route path="/login" component={Login} />
       <Route path="/signup" render={Signup} />
     </Switch>
