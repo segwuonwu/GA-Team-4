@@ -1,15 +1,14 @@
 import React from "react";
-import PreNavBar from "../Components/PreNavBar";
 import UserSignUp from "../Components/UserSignUp";
-import Footer from "../Components/Footer";
+
 
 function SignupUser() {
   return (
     <div>
 
-      <PreNavBar />
+      
       <UserSignUp />
-      <Footer />
+      
 
     </div>
   );
