@@ -11,7 +11,7 @@ db.Event.create({
     organization: 'World Relief Seattle'
 })
 .then(result => {
-    console.log(`${eventname} has been created!`);
+    console.log(`${result.eventname} has been created!`);
 })
 .catch(err => {
     console.log('Error Message', err);
@@ -28,7 +28,7 @@ db.Event.create({
     organization: 'Heritage Park'
 })
 .then(result => {
-    console.log(`${eventname} has been created!`);
+    console.log(`${result.eventname} has been created!`);
 })
 .catch(err => {
     console.log('Error Message', err)
@@ -45,7 +45,7 @@ db.Event.create({
     organization: 'Des Moines Area Food Bank'
 })
 .then(result => {
-    console.log(`${eventname} has been created!`);
+    console.log(`${result.eventname} has been created!`);
 })
 .catch(err => {
     console.log('Error Message', err)
@@ -62,7 +62,7 @@ db.Event.create({
     organization: 'American Red Cross'
 })
 .then(result => {
-    console.log(`${eventname} has been created!`);
+    console.log(`${result.eventname} has been created!`);
 })
 .catch(err => {
     console.log('Error Message', err)
@@ -79,8 +79,10 @@ db.Event.create({
     organization: 'Dirt Corps'
 })
 .then(result => {
-    console.log(`${eventname} has been created!`);
+    console.log(`${result.eventname} has been created!`);
 })
 .catch(err => {
     console.log('Error Message', err)
 });
+
+process.exit();
