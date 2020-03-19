@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router()
 const db = require('../models/index')
 
-router.get('/', (req, res)=>{
+
+router.get('/', (req, res) => {
     res.send('Welcome to user profile');
 })
+
 // page to get a list of events
 router.get('/events', (req, res) => {
     db.Event.find({})
@@ -15,6 +17,7 @@ router.get('/events', (req, res) => {
 
 //Show specific Event. 
 router.get('/events/:id', (req, res) => {
+
     db.Event.findById(req.params.id)
         .then(events => {
             res.send(events);
@@ -37,3 +40,4 @@ router.delete('/events/:id', (req, res) => {
 
 
 module.exports = router;
+

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // Create organization Schema
 const organizationSchema = new mongoose.Schema({
-    name: {
+    orgname: {
         type: String,
         required: true
     },

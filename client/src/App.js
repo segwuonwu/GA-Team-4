@@ -1,6 +1,11 @@
 import React from 'react';
+import { useState } from "react";
+import { BrowserRouter as Router} from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import Home from "./pages/Home.js";
+import PreAuthNav from "./Components/PreNavBar";
+import PostAuthNav from "./Components/LogNavBar";
+import Content from "./Components/Content";
+import Footer from "./Components/Footer";
 import "./scss/App.scss";
 
 const theme = createMuiTheme({
@@ -19,11 +24,20 @@ const theme = createMuiTheme({
 });
 
 function App() {
+  const [authStatus, setAuthStatus] = useState(true);
+  function setNav() {
+    return authStatus ? <PostAuthNav /> : <PreAuthNav />;
+  }
   return (
-    <div>
-      <ThemeProvider theme={theme}>
-      </ThemeProvider>
-    </div>
+    <Router>
+      <div>
+        <ThemeProvider theme={theme}>
+          {setNav()}
+          <Content />
+          <Footer />
+        </ThemeProvider>
+      </div>
+    </Router>
   );
 }
 
