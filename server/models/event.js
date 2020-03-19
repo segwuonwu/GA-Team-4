@@ -23,8 +23,7 @@ const eventSchema = new mongoose.Schema({
         required: true
     },
     organization: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'organization'
+        type: String
     }
 });
 
