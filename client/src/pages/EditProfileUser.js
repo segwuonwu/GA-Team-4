@@ -1,8 +1,11 @@
 import React from "react";
+import EditProfile from '../Components/EditProfile';
 
 function EditProfileUser() {
   return (
-    <div></div>
+    <div>
+      <EditProfile />
+    </div>
   );
 }
 
