@@ -26,6 +26,10 @@ const userSchema = new mongoose.Schema({
     image: {
         type: String,
         default: 'http://www.placecage.com/200/200'
+    },
+    event: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'event'
     }
 });
 
