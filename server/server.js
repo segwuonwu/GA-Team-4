@@ -16,7 +16,7 @@ app.use('/organizations', require('./routes/organizations'))
 
 // Landing page route
 // app.get('/', (req, res) =>{
-//   res.send('landing');
+//   res.render('landing');
 // });
 
 
