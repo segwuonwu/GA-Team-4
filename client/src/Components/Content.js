@@ -9,7 +9,7 @@ function Content() {
     <Switch>
       <Route path="" exact={true} component={Landing} />
       <Route path="/login" component={Login} />
-      <Route path="/signup" render={Signup} />
+      <Route path="/signup" component={Signup} />
     </Switch>
   );
 }
