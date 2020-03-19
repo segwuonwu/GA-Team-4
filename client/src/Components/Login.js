@@ -7,7 +7,9 @@ import React from 'react';
 //login button
 function Login() {
     return (
-      <div></div>
+      <div>
+        <h3>Hello</h3>
+      </div>
     );
   }
   

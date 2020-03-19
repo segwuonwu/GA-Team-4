@@ -11,8 +11,9 @@ function Logo(props) {
   return (
     <div>
       <Router>
-        <img src={logo_img} className="logo" alt="logo" />
-        <Link to={props.link} />
+        <Link to={props.link}>
+          <img src={logo_img} className="logo" alt="logo" />
+        </Link>
       </Router>
     </div>
   );
