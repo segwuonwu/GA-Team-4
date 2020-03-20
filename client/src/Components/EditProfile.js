@@ -69,6 +69,7 @@ function EditProfile(props) {
                 id="email"
                 label="Email Address"
                 name="email"
+                type="email"
                 value={props.user? props.user.email : ""}
                 onChange={props._change}
               />
@@ -93,7 +94,7 @@ function EditProfile(props) {
                 label="Phone Number"
                 type="phonenumber"
                 id="phonenumber"
-                value={props.user.phonenumber ? props.user.phonenumber : ""}
+                value={props.user ? props.user.phonenumber : ""}
                 onChange={props._change}
               />
             </Grid>
@@ -103,7 +104,7 @@ function EditProfile(props) {
                 fullWidth
                 name="image"
                 label="Profile Url"
-                type="image"
+                type="url"
                 id="image"
                 value={props.user ? props.user.image : ""}
                 onChange={props._change}
