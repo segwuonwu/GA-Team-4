@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import Avatar from '@material-ui/core/Avatar';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -8,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom';
 
 
   const useStyles = makeStyles(theme => ({
@@ -85,9 +84,6 @@ import {Redirect} from 'react-router-dom'
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar>
-          /* We Put the Logo Here*/
-        </Avatar>
         <Typography component="h1" variant="h5">
           New User Sign up
         </Typography>
@@ -102,6 +98,7 @@ import {Redirect} from 'react-router-dom'
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onClick={e => setFirstname(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -112,6 +109,7 @@ import {Redirect} from 'react-router-dom'
                 id="lastName"
                 label="Last Name"
                 name="lastName"
+                onClick={e => setLastname(e.target.value)}
 
               />
             </Grid>
@@ -123,6 +121,7 @@ import {Redirect} from 'react-router-dom'
                 id="email"
                 label="Email Address"
                 name="email"
+                onClick={e => setEmail(e.target.value)}
 
               />
             </Grid>
@@ -135,6 +134,7 @@ import {Redirect} from 'react-router-dom'
                 label="Password"
                 type="password"
                 id="password"
+                onClick={e => setPassword(e.target.value)}
 
               />
             </Grid>
@@ -146,6 +146,7 @@ import {Redirect} from 'react-router-dom'
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={e => setValue(e.target.value)}
           >
             Get Volunteering!
           </Button>
