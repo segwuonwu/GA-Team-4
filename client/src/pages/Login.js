@@ -1,9 +1,14 @@
 import React from "react";
+import Login from '../Components/Login';
 
-function Login() {
+
+function userLogin() {
+  
   return (
-    <div></div>
+    <div>
+      <Login />
+    </div>
   );
 }
 
-export default Login;
+export default userLogin;

@@ -34,7 +34,7 @@ const userSchema = mongoose.Schema({
 //using bcrypt to hash the password
 userSchema.pre('save', function(next) {
     if (this.isNew) {
-        this.password = bcypt.hashSync(this.password, 12)
+        this.password = bcrypt.hashSync(this.password, 12)
     }
 
     next()

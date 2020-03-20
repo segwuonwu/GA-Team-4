@@ -44,7 +44,7 @@ router.post('/signup', (req, res) => {
         db.User.create(req.body)
         .then(newUser => {
             //make user a token
-            let token = jwt.sign(newser.toJSON(), process.env.JWT_SECRET, {
+            let token = jwt.sign(newUser.toJSON(), process.env.JWT_SECRET, {
                 expiresIn: 60 * 60 * 8 //user must relog in 8 hours
             })
             res.send({ token })

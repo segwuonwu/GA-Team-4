@@ -1,5 +1,6 @@
 import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import jwtDecode from 'jwt-decode'
 import { BrowserRouter as Router} from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import PreAuthNav from "./Components/PreNavBar";
@@ -24,9 +25,43 @@ const theme = createMuiTheme({
 });
 
 function App() {
-  const [authStatus, setAuthStatus] = useState(true);
+  const [authStatus, setAuthStatus] = useState(false);
+
+  // Declare state variables
+  let [user, setUser] = useState(null)
+
+  useEffect(() => {
+    decodeToken()
+  }, [])
+
+  const updateUser = newToken => {
+    if (newToken) {
+      localStorage.setItem('mernToken', newToken)
+      decodeToken(newToken);
+    } else {
+      setUser(null);
+    }
+  }
+
+  const decodeToken = existingToken => {
+    let token = existingToken || localStorage.getItem('mernToken');
+
+    if (token) {
+      let decoded = jwtDecode(token);
+      // Check for expired token or non valid or user is not logged in at all
+      if (!decoded || Date.now() >= decoded.exp * 1000) {
+        console.log("Token expired!!")
+        setUser(null);
+      } else {
+        setUser(decoded);
+      }
+    } else {
+      setUser(null);
+    }
+  }
+
   function setNav() {
-    return authStatus ? <PostAuthNav /> : <PreAuthNav />;
+    return authStatus ? <PostAuthNav /> : <PreAuthNav updateUser={updateUser} user={user}/>;
   }
   return (
     <Router>
