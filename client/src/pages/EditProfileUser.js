@@ -1,10 +1,10 @@
 import React from "react";
 import EditProfile from '../Components/EditProfile';
 
-function EditProfileUser() {
+function EditProfileUser(props) {
   return (
     <div>
-      <EditProfile />
+      <EditProfile user={props.user ? props.user : null} />
     </div>
   );
 }

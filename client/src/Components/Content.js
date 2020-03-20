@@ -15,9 +15,9 @@ function Content(props) {
       <Route path="/" exact={true} component={Landing} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
-      <Route path="/home" render={() => <Home user={props.user} />} />
-      <Route path="/profile" exact={true} component={Profile} />
-      <Route path="/profile/edit" component={EditProfile} />
+      <Route path="/home" render={() => <Home user={props.user ? props.user : null} />} />
+      <Route path="/profile" exact={true} render={() => <Profile user={props.user ? props.user : null} />} />
+      <Route path="/profile/edit" render={() => <EditProfile user={props.user ? props.user : null} />} />
       <Route path="/search" component={SearchResults} />
       <Route path="/organization/:id" component={Organization} />
     </Switch>
