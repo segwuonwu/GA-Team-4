@@ -77,7 +77,7 @@ import {Redirect} from 'react-router-dom'
   
     }
     if (props.user) {
-      return <Redirect to="../Components/Home" />
+      return <Redirect to="/Home" />
     }
 
   return (
