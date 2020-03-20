@@ -29,7 +29,11 @@ function Home(props) {
         }
         return response.json();
       }).then(events => {
-        setEvents(events);
+        if (events.length < 1) {
+          setError("No event to show right now");
+        } else {
+          setEvents(events);
+        }
       }).catch(err => {
         setError("Couldn't retrieve events")
         console.log(err);
