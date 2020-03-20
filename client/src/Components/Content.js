@@ -9,13 +9,13 @@ import EditProfile from "../pages/EditProfileUser";
 import SearchResults from "../pages/SearchResultsUser";
 import Organization from "../pages/OrganizationUser";
 
-function Content() {
+function Content(props) {
   return(
     <Switch>
       <Route path="/" exact={true} component={Landing} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
-      <Route path="/home" component={Home} />
+      <Route path="/home" render={() => <Home user={props.user} />} />
       <Route path="/profile" exact={true} component={Profile} />
       <Route path="/profile/edit" component={EditProfile} />
       <Route path="/search" component={SearchResults} />
