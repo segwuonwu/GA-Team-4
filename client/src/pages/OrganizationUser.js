@@ -14,8 +14,8 @@ function OrganizationUser() {
       <Button>Follow</Button>
       <List>
       {
-        events.forEach((item, index) => {
-          <EventItem event={item} key={index} />
+        events.map((item, index) => {
+          return <EventItem event={item} key={index} />
         })
       }
       </List>
