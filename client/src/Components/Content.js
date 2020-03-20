@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import Profile from "../pages/ProfileUser";
 import EditProfile from "../pages/EditProfileUser";
 import SearchResults from "../pages/SearchResultsUser";
+import Organization from "../pages/OrganizationUser";
 
 function Content() {
   return(
@@ -18,6 +19,7 @@ function Content() {
       <Route path="/profile" exact={true} component={Profile} />
       <Route path="/profile/edit" component={EditProfile} />
       <Route path="/search" component={SearchResults} />
+      <Route path="/organization/:id" component={Organization} />
     </Switch>
   );
 }
