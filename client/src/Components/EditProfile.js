@@ -9,9 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-
-
-
 function EditProfile() {
 
   const useStyles = makeStyles(theme => ({
@@ -49,66 +46,61 @@ function EditProfile() {
               <TextField
                 name="firstName"
                 variant="outlined"
-                required
                 fullWidth
                 id="firstName"
                 label="First Name"
-                value={this.props.value}
-                onChange={this.props._change}
+                value={props.value}
+                onChange={props._change}
                 
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                value={this.props.value}
-                onChange={this.props._change}
+                value={props.value}
+                onChange={props._change}
 
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
-                value={this.props.value}
-                onChange={this.props._change}
+                value={props.value}
+                onChange={props._change}
 
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 name="password"
                 label="Password"
                 type="password"
                 id="password"
-                value={this.props.value}
-                onChange={this.props._change}
+                value={props.value}
+                onChange={props._change}
 
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
-                required
                 fullWidth
                 name="phonenumber"
                 label="Phone Number"
                 type="phonenumber"
                 id="phonenumber"
-                value={this.props.value}
-                onChange={this.props._change}
+                value={props.value}
+                onChange={props._change}
 
               />
             </Grid>
@@ -130,4 +122,4 @@ function EditProfile() {
    
   );
 };
-export default EditProfileUser;
+export default EditProfile;
