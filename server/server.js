@@ -11,12 +11,14 @@ app.use(express.json());
 app.use(cors());
 
 // Declare controllers/route
+app.use('/auth', require('./routes/auth'))
 app.use('/users', require('./routes/users'))
 app.use('/organizations', require('./routes/organizations'))
+app.use('/events', require('./routes/events'))
 
 // Landing page route
 // app.get('/', (req, res) =>{
-//   res.send('landing');
+//   res.render('landing');
 // });
 
 

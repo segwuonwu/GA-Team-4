@@ -23,13 +23,12 @@ const eventSchema = new mongoose.Schema({
         required: true
     },
     organization: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'organization'
+        type: String
     }
 });
 
 // Use schema to create model
-const Event = mongoose.model('event', eventSchema)
+const Event = mongoose.model('Event', eventSchema)
 
 // Export event model
 module.exports = Event;
