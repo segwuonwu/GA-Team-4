@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Typography, Button, Grid } from "@material-ui/core";
 
-function ProfileUser() {
+function ProfileUser(props) {
   return (
     <div>
       <Grid container spacing={2}>
         <Grid item md={2}>
-          <img src="https://placekitten.com/600/600" alt="Kitten!" />
+          <img src={props.user ? props.user.image : "https://placekitten.com/200/200"} alt="User Profile Picture" />
         </Grid>
         <Grid item md={7}>
-          <Typography>User Name Goes Here</Typography>
+          <Typography>{props.user ? props.user.firstname + " " + props.user.lastname : "User Name"}</Typography>
         </Grid>
         <Grid item md={2}>
           <Button
@@ -18,7 +18,7 @@ function ProfileUser() {
             to="/profile/edit">Edit Profile</Button>
         </Grid>
       </Grid>
-      <Typography>User Email</Typography>
+  <Typography>{props.user ? props.user.email : "User email"}</Typography>
     </div>
   );
 }
