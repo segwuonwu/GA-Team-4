@@ -5,11 +5,7 @@ import UserSignUp from "../Components/UserSignUp";
 function SignupUser() {
   return (
     <div>
-
-      
       <UserSignUp />
-      
-
     </div>
   );
 }
