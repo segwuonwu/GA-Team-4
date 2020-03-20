@@ -76,7 +76,7 @@ import {Redirect} from 'react-router-dom';
   
     }
     if (props.user) {
-      return <Redirect to="/Home" />
+      return <Redirect to="/home" />
     }
 
   return (
@@ -165,4 +165,4 @@ import {Redirect} from 'react-router-dom';
   );
 };
 
-export default UserSignUp;
+export default SignUp;
