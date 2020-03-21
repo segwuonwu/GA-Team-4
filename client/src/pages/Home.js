@@ -17,11 +17,14 @@ const useStyles = makeStyles(theme => ({
 
 function Home(props) {
   const [events, setEvents] = useState(null);
+  const [organizations, setOrganizations] = useState(null);
   const [error, setError] = useState(null);
   const classes = useStyles();
 
+  
   useEffect(() => {
-    fetch()
+    // Call events for a user
+    fetch("")
       .then(response => {
         if (!response.ok) {
           setError("Couldn't reach database");
@@ -37,7 +40,26 @@ function Home(props) {
       }).catch(err => {
         setError("Couldn't retrieve events")
         console.log(err);
-      })
+      });
+
+    // Call organizations for a user
+    fetch("")
+      .then(response => {
+        if (!response.ok) {
+          setError("Couldn't reach database");
+          return;
+        }
+        return response.json();
+      }).then(organizations => {
+        if (organizations.length < 1) {
+          setError("No organizations to show right now");
+        } else {
+          setOrganizations(organizations);
+        }
+      }).catch(err => {
+        setError("Couldn't retrieve organizations");
+        console.log(err);
+      });
   }, []);
 
   const eventList = () => {
