@@ -77,7 +77,7 @@ function Login(props) {
 
   // if authenticated we are updateUser + redirect to profile
   if (props.user) {
-    return <Redirect to="/profile" />
+    return <Redirect to="/home" />
   }
 
   return (
@@ -91,8 +91,7 @@ function Login(props) {
           Sign in
         </Typography>
         <span className="red">{message}</span>
-        <form className={classes.form} >
-        {/* <form className={classes.form} > */}
+        <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -125,7 +124,7 @@ function Login(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={handleSubmit}
+            // onClick={handleSubmit}
           >
             Log in
           </Button>

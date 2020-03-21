@@ -8,8 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Redirect } from 'react-router-dom';
-// import UserLogin from "../Components/UserLogin";
-
 
   const useStyles = makeStyles(theme => ({
     paper: {
@@ -67,7 +65,7 @@ const SignUp = props => {
          }
   
          response.json().then(result => {
-          props.createUser(result.token);
+          props.updateUser(result.token);
         })
        })
       .catch(err => {
@@ -77,11 +75,10 @@ const SignUp = props => {
   
     }
     if (props.user) {
-      return <Redirect to="/profile" />
+      return <Redirect to="/home" />
     }
 
   return (
-   
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -89,8 +86,7 @@ const SignUp = props => {
           New User Sign up
         </Typography>
         <span className="red">{message}</span>
-        <form className={classes.form} >
-        {/* <form className={classes.form} > */}
+        <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -113,7 +109,6 @@ const SignUp = props => {
                 label="Last Name"
                 name="lastName"
                 onClick={e => setLastname(e.target.value)}
-
               />
             </Grid>
             <Grid item xs={12}>
@@ -125,7 +120,6 @@ const SignUp = props => {
                 label="Email Address"
                 name="email"
                 onClick={e => setEmail(e.target.value)}
-
               />
             </Grid>
             <Grid item xs={12}>
@@ -147,7 +141,7 @@ const SignUp = props => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onSubmit={handleSubmit}
+            // onClick={handleSubmit}
           >
             Get Volunteering!
           </Button>
