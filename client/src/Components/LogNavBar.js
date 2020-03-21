@@ -26,7 +26,7 @@ function LogNavBar(props) {
           <Button
             color="inherit"
             component={Link}
-            to="/">Logout</Button>
+            to="/" onClick={handleLogout}>Logout</Button>
         </Toolbar>
       </AppBar>
     );

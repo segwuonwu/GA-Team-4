@@ -8,14 +8,14 @@ import Logout from './LogNavBar'
 import Logo from "./Logo";
 
 function PreNavBar(props) {
-  const handleLogout = e => {
-    e.preventDefault()
-    // Remove the token from localstorage 
-    localStorage.removeItem('mernToken')
+  // const handleLogout = e => {
+  //   e.preventDefault()
+  //   // Remove the token from localstorage 
+  //   localStorage.removeItem('mernToken')
 
-    // Update the state of the App
-    props.updateUser();
-  }
+  //   // Update the state of the App
+  //   props.updateUser();
+  // }
 
   let links = (
     <span>
@@ -33,19 +33,19 @@ function PreNavBar(props) {
     </span>
   )
 
-  // If the user is logged in, show profile page and logout links
-  if (props.user) {
-    links = (
-      <span>
-        <li>
-        <Link to="/profile">Profile</Link>
-        </li>
-        <li>
-          <Logout onClick={handleLogout}/>
-        </li>
-      </span>
-    )
-  }
+  // // If the user is logged in, show profile page and logout links
+  // if (props.user) {
+  //   links = (
+  //     <span>
+  //       <li>
+  //       <Link to="/profile">Profile</Link>
+  //       </li>
+  //       <li>
+  //         <Logout onClick={handleLogout}/>
+  //       </li>
+  //     </span>
+  //   )
+  // }
 
   return (
     <div>

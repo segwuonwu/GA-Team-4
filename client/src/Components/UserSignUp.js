@@ -77,7 +77,7 @@ const SignUp = props => {
   
     }
     if (props.user) {
-      return <Redirect to="/home" />
+      return <Redirect to="/profile" />
     }
 
   return (
@@ -89,7 +89,7 @@ const SignUp = props => {
           New User Sign up
         </Typography>
         <span className="red">{message}</span>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+        <form className={classes.form} >
         {/* <form className={classes.form} > */}
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
@@ -147,7 +147,7 @@ const SignUp = props => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            // onClick={e => setValue(e.target.value)}
+            onSubmit={handleSubmit}
           >
             Get Volunteering!
           </Button>

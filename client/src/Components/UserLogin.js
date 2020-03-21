@@ -91,7 +91,7 @@ function Login(props) {
           Sign in
         </Typography>
         <span className="red">{message}</span>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+        <form className={classes.form} >
         {/* <form className={classes.form} > */}
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -125,6 +125,7 @@ function Login(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSubmit}
           >
             Log in
           </Button>

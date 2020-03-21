@@ -24,11 +24,11 @@ const theme = createMuiTheme({
   }
 });
 
-function App() {
-  const [authStatus, setAuthStatus] = useState(false);
-
+function App(props) {
   // Declare state variables
   let [user, setUser] = useState(null)
+  const [authStatus, setAuthStatus] = useState(props.user);
+
 
   useEffect(() => {
     decodeToken()
