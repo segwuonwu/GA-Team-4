@@ -64,7 +64,7 @@ router.post('/signup', (req, res) => {
     });
 });
 
-router.get('/events', (req, res) => {
+router.get('/home', (req, res) => {
     res.send({ message: 'Secret message for people who are logged in only! '}) 
 });
 

@@ -57,35 +57,35 @@ const addEventToUser = function(userId, event) {
   );
 };
 
-//TEST INFO
-const run = async function() {
-  var event1 = await createEvent({
-   eventname: 'event1',
-   eventdate: "4/20/2020",
-   eventlocation: 'Yo boys crib',
-   city: 'Seattle',
-   state: "WA",
-   details: 'Come hang with yo boy at his crib.',
-   firstname: 'Shawhizzle'
-  });
+// //TEST INFO
+// const run = async function() {
+//   var event1 = await createEvent({
+//    eventname: 'event1',
+//    eventdate: "4/20/2020",
+//    eventlocation: 'Yo boys crib',
+//    city: 'Seattle',
+//    state: "WA",
+//    details: 'Come hang with yo boy at his crib.',
+//    firstname: 'Shawhizzle'
+//   });
 
-  var userA = await createUser({
-    firstname: 'Shawhizzle',
-    lastname: "Sohrahizzle",
-    password: 'manizzle',
-    email: 'shawhizzle@manizzzzzzle.com',
-    details: 'yo, i got hella cute cats, and im cool af. Come visit!',
-    eventname: 'event1'
-  });
+//   var userA = await createUser({
+//     firstname: 'Shawhizzle',
+//     lastname: "Sohrahizzle",
+//     password: 'manizzle',
+//     email: 'shawhizzle@manizzzzzzle.com',
+//     details: 'yo, i got hella cute cats, and im cool af. Imma come make this party littttttt!',
+//     eventname: 'event1'
+//   });
 
-  var userB = await createUser({
-    firstname: 'Eros',
-    lastname: 'Boo',
-    password: 'mydadisthebest',
-    email: 'erosboo@shawhizzzzzzzle.com',
-    details: 'yeah, you heard my dad. Come visit us. We cute af and hes the coolest cat we know.',
-    eventname: 'event1'
-  });
+//   var userB = await createUser({
+//     firstname: 'Eros',
+//     lastname: 'Boo',
+//     password: 'mydadisthebest',
+//     email: 'erosboo@shawhizzzzzzzle.com',
+//     details: 'yeah, you heard my dad. We gon fire this uppp! We cute af and hes the coolest cat we know.',
+//     eventname: 'event1'
+//   });
     
     var event = await addUserToEvent(event1._id, userA);
     console.log("\n>> event1:\n", event);
