@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -9,10 +7,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {Redirect} from 'react-router-dom';
 
-
-
-function SignUp(props) {
 
   const useStyles = makeStyles(theme => ({
     paper: {
@@ -34,64 +30,60 @@ function SignUp(props) {
     },
   }));
   
-  const classes = useStyles()
+  
 
-
-  // Declare and initialize state variables
-  let [email, setEmail] = useState('')
-  let [firstname, setFirstname] = useState('')
-  let [lastname, setLastname] = useState('')
-  let [message, setMessage] = useState('')
-  let [password, setPassword] = useState('')
-  let [image, setImage] = useState('')
-
-  useEffect(()=> {
-    setMessage("")
-  }, [email, firstname, lastname, password, image])
-
-  const handleSubmit = e => {
-    e.preventDefault()
-    fetch(`${process.env.REACT_APP_SERVER_URL}/auth/signup`, {
-      method: 'POST',
-      body: JSON.stringify({
-        firstname,
-        lastname,
-        email,
-        password,
-        image
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(response => {
-      if (!response.ok) {
-        console.log(response);
-        setMessage(`${response.status}: ${response.statusText}`);
-        return;
-      }
-
-      // if user signup succesfully
-      response.json().then(result => {
-        props.updateUser(result.token);
+const SignUp = props => {
+    const classes = useStyles()
+    // Declare and initialize state variables
+    let [firstname, setFirstname] = useState('')
+    let [lastname, setLastname] = useState('')
+    let [email, setEmail] = useState('')
+    let [message, setMessage] = useState('')
+    let [password, setPassword] = useState('')
+  
+  
+      useEffect(()=>{
+        setMessage('')   
+      }, [firstname, lastname, email, password])
+  
+    const handleSubmit = e => {
+      e.preventDefault()
+      fetch(`${process.env.REACT_APP_SERVER_URL}/server/auth`,{
+        method: 'POST',
+        body: JSON.stringify({
+          firstname,
+          lastname,
+          email,
+          password
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
-    })
-    // Update the state of each declared variable to be set to form input from user
-    // post update state to the server
-  }
-
-  if (props.user) {
-    return <Redirect to="/profile" />
-  }
-
+       .then(response => {
+         if (!response.ok){
+           setMessage("Thank you for joining")
+         }
+  
+         response.json().then(result => {
+          props.createUser(result.token);
+        })
+       })
+      .catch(err => {
+        console.log(err);
+        setMessage(`${err.toString()}`);
+      })
+  
+    }
+    if (props.user) {
+      return <Redirect to="/home" />
+    }
 
   return (
    
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar>
-          // We Put the Logo Here\\
-        </Avatar>
         <Typography component="h1" variant="h5">
           New User Sign up
         </Typography>
@@ -108,7 +100,7 @@ function SignUp(props) {
                 id="firstName"
                 label="First Name"
                 autoFocus
-                onChange={e => setFirstname(e.target.value)}
+                onClick={e => setFirstname(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -118,8 +110,9 @@ function SignUp(props) {
                 fullWidth
                 id="lastName"
                 label="Last Name"
-                name="lastname"
-                onChange={e => setLastname(e.target.value)}
+                name="lastName"
+                onClick={e => setLastname(e.target.value)}
+
               />
             </Grid>
             <Grid item xs={12}>
@@ -130,7 +123,8 @@ function SignUp(props) {
                 id="email"
                 label="Email Address"
                 name="email"
-                onChange={e => setEmail(e.target.value)}
+                onClick={e => setEmail(e.target.value)}
+
               />
             </Grid>
             <Grid item xs={12}>
@@ -142,21 +136,9 @@ function SignUp(props) {
                 label="Password"
                 type="password"
                 id="password"
-                onChange={e => setPassword(e.target.value)}
+                onClick={e => setPassword(e.target.value)}
               />
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                fullWidth
-                name="image"
-                label="imgageUrl"
-                type="url"
-                id="image"
-                onChange={e => setImage(e.target.value)}
-              />
-            </Grid>
-            
           </Grid>
           <Button
             type="submit"
@@ -164,6 +146,7 @@ function SignUp(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
+            // onClick={e => setValue(e.target.value)}
           >
             Get Volunteering!
           </Button>
