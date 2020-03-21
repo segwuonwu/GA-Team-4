@@ -24,7 +24,8 @@ app.use('/events', require('./routes/events'))
 //   res.render('landing');
 // });
 
-//1:M Relationship between Organization and Event
+//****1:M Relationship between Organization and Event****
+
 const createOrganization = function(organization)  {
   return db.Organization.create(organization).then(docOrganization => {
     console.log("\n>> Created Organization:\n", docOrganization);
@@ -52,7 +53,7 @@ const newEvent = function(organizationId, event) {
   );
 };
 
-// //TEST INFO for 1:M
+// // //TEST INFO for 1:M
 // const run = async function() {
 //   var organization = await createOrganization({
 //     orgname: 'Shawhizzles Shack of Splendor',
@@ -75,7 +76,9 @@ const newEvent = function(organizationId, event) {
 // };
 
 
-//M:M Relationship between User and Event
+
+//****M:M Relationship between User and Event****
+
 const createEvent = function(event) {
   return db.Event.create(event).then(docEvent => {
     console.log("\n>> Created Event:\n", docEvent);
@@ -107,7 +110,7 @@ const addEventToUser = function(userId, event) {
   );
 };
 
-// //TEST INFO for M:M
+//TEST INFO for M:M
 // const run = async function() {
 //   var event1 = await createEvent({
 //    eventname: 'event1',
@@ -137,31 +140,105 @@ const addEventToUser = function(userId, event) {
 //     eventname: 'event1'
 //   });
     
-    var event = await addUserToEvent(event1._id, userA);
+    var event = addUserToEvent(event1._id, userA);
     console.log("\n>> event1:\n", event);
     
-    var user =  await addEventToUser(userA._id, event1);
+    var user = addEventToUser(userA._id, event1);
     console.log("\n>> userA:\n", user);
     
-    event = await addUserToEvent(event1._id, userB);
+    event =  addUserToEvent(event1._id, userB);
     console.log("\n>> event1:\n", event);
     
-    user = await addEventToUser(userB._id, event1);
+    user =  addEventToUser(userB._id, event1);
     console.log('\n userB:\n', user);
 
-  var event2 = await createEvent({
+  var event2 =  createEvent({
     firstname: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
     }
   });
 
-  event = await addUserToEvent(event2._id, userB);
+  event = addUserToEvent(event2._id, userB);
   console.log('\n>> event2:\n', event);
 
-  user = await addEventToUser(userB_.id, event2);
+  user = addEventToUser(userB_.id, event2);
   console.log("\n>> userB:\n", user);
+// };
+
+const getEventWithPopulate = function(id) {
+  return db.Event.findById(id).populate('users');
 };
+
+const getUserwithPopulate = function(id) {
+  return db.User.findById(id).populate('events');
+};
+
+//****M:M between User and Organization****
+
+const addUserToOrganization = function(organizationID, user) {
+  return db.User.findByIdAndUpdate(
+    organizationId,
+    { $push: { tags: user._id } },
+    { new: true, useFindAndModify: false}
+  );
+};
+
+const addOrganizationToUser = function(userId, organization) {
+  return  db.User.findByIdAndUpdate(
+    userId,
+    { $push: { organizations: organization._id } },
+    { new: true, useFindAndModify: false }
+  );
+};
+
+// //TEST INFO User and Organization
+// const run = async function() {
+//   var org1 = await createOrganization({
+//     orgname: 'Animal Crossing',
+//     email: 'tomnook@ac.com',
+//     password: 'bells'
+//   });
+
+//   var user1 = await createUser({
+//     firstname: 'Tom',
+//     lastname: 'Nooks',
+//     password: 'bells',
+//     email: 'tomnooks@ac.com'  
+//   });
+
+//   var user2 = await createUser({
+//     firstname: 'Isabelle',
+//     lastname: '????',
+//     password: 'wtfisisabelleslastname?',
+//     email: 'isabelle@nolastname.com'
+//   });
+
+  var organization = await addUserToOrganization(org1._id, user1);
+  console.log("\n>> org1:\n");
+
+  var userorg = await addOrganizationToUser(user1._id, org1);
+  console.log("\n user1:\n", user);
+
+  organization = await addUserToOrganization(org1._id, user2);
+  console.log('\n>> org1:\n', organization);
+
+  userorg = await addUserToOrganization(user2._id, org1);
+  console.log("\n>> user2:\n", user );
+
+  var organization2 = await createOrganization({
+    orgname: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Organization'
+    }
+  });
+
+  organization = await addUserToOrganization(organization2._id, user2);
+  console.log('\n>> organization2:\n', organization);
+
+  user = await addOrganizationToUser(user2._id, organization2);
+  console.log('\n>> user2:\n', user);
+// };
 
 run();
 
