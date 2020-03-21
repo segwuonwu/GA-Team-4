@@ -10,9 +10,10 @@ const [error, setError] = useState(null);
 const useQuery = () => {
     return new URLSearchParams(useLocation().search);
   }
-
+  const query = useQuery().get("query");
 //"https://codesandbox.io/s/react-router-query-parameters-mfh8p?from-embed"
   useEffect(()=>{
+    case "events":
       fetch(events)
         .then(response => {
           if (!response.ok) {
@@ -20,12 +21,13 @@ const useQuery = () => {
             return;
           } return response.json();
         }).then(events => {
-          setState(events);
+          setResults(events);
         }).catch(err => {
           setError("Can't find any Events")
           console.log(err);
         })
- 
+        break;
+      case "orginizations":
     fetch(orginizations)
     .then(response => {
       if (!response.ok) {
@@ -33,11 +35,14 @@ const useQuery = () => {
         return;
       } return response.json();
     }).then(orginizations => {
-      setState(orginizations);
+      setResults(orginizations);
     }).catch(err => {
       setError("Cant find the Org you're looking for")
       console.log(err);
     })
+    break;
+    default:
+      return;
   },[]);
 
   }
@@ -45,7 +50,7 @@ const useQuery = () => {
   return (
     <div>
       <Typography>Search Result for {query}</Typography>
-      <SearchList items={[]} resultType={query} />
+      <SearchList items={ results ? results : [] } resultType={query} />
     </div>
   )
 }
