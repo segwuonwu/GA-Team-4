@@ -57,6 +57,7 @@ const addEventToUser = function(userId, event) {
   );
 };
 
+//TEST INFO
 const run = async function() {
   var event1 = await createEvent({
    eventname: 'event1',
@@ -73,7 +74,7 @@ const run = async function() {
     lastname: "Sohrahizzle",
     password: 'manizzle',
     email: 'shawhizzle@manizzzzzzle.com',
-    details: 'yo, we hella cute and our dad is sick. Come visit!',
+    details: 'yo, i got hella cute cats, and im cool af. Come visit!',
     eventname: 'event1'
   });
 
@@ -82,8 +83,8 @@ const run = async function() {
     lastname: 'Boo',
     password: 'mydadisthebest',
     email: 'erosboo@shawhizzzzzzzle.com',
-    details: 'yeah, you heard my dad. Come visit us. We cute af',
-    eventname: 'event1',
+    details: 'yeah, you heard my dad. Come visit us. We cute af and hes the coolest cat we know.',
+    eventname: 'event1'
   });
     
     var event = await addUserToEvent(event1._id, userA);
