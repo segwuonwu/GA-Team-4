@@ -61,14 +61,14 @@ function App() {
   }
 
   function setNav() {
-    return authStatus ? <PostAuthNav /> : <PreAuthNav updateUser={updateUser} user={user}/>;
+    return authStatus ? <PostAuthNav updateUser={updateUser} user={user}/> : <PreAuthNav updateUser={updateUser} user={user}/>;
   }
   return (
     <Router>
-      <div>
+      <div className="App">
         <ThemeProvider theme={theme}>
           {setNav()}
-          <Content />
+          <Content updateUser={updateUser} user={user}/>
           <Footer />
         </ThemeProvider>
       </div>

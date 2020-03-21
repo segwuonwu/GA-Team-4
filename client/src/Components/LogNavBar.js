@@ -4,7 +4,16 @@ import { AppBar, Toolbar, Button } from "@material-ui/core";
 import Searchbar from "./Searchbar";
 import Logo from "./Logo";
 
-function LogNavBar() {
+function LogNavBar(props) {
+  const handleLogout = e => {
+    e.preventDefault()
+    // Remove the token from localstorage 
+    localStorage.removeItem('mernToken')
+
+    // Update the state of the App
+    props.updateUser();
+  }
+
     return (
       <AppBar position="static">
         <Toolbar>

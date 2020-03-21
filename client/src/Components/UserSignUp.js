@@ -7,7 +7,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+// import UserLogin from "../Components/UserLogin";
 
 
   const useStyles = makeStyles(theme => ({
@@ -48,7 +49,7 @@ const SignUp = props => {
   
     const handleSubmit = e => {
       e.preventDefault()
-      fetch(`${process.env.REACT_APP_SERVER_URL}/server/auth`,{
+      fetch(`${process.env.REACT_APP_SERVER_URL}/auth/signup`,{
         method: 'POST',
         body: JSON.stringify({
           firstname,
@@ -152,7 +153,7 @@ const SignUp = props => {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/login" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
