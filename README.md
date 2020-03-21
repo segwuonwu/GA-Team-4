@@ -6,6 +6,11 @@
  - [Solomon Egwuonwu](https://github.com/segwuonwu)
  - [Melissa Young](https://github.com/melissay94)
 
+
+### Special Thanks to: 
+ [Yashoma Boodhan](https://github.com/yboodhan), [Kennan Salisbury](https://github.com/kennansalisbury), [Nick Quandt](https://github.com/nickubed) for helping us overcome some of the challenges with our project and pointing us in the right direction and allowing us to take inspiration from their own project 3: [Meet Out](https://meeting-out.herokuapp.com/) ([GitHub Here](https://github.com/yboodhan/meet-out))
+
+
 ## General Plan
 ### Problem to Solve: 
 Organizing volunteering events can be a handful, you need to reach out and access a lot of different technologies to make it work and get the word out.
