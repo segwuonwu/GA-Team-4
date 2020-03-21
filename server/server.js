@@ -24,8 +24,58 @@ app.use('/events', require('./routes/events'))
 //   res.render('landing');
 // });
 
+//1:M Relationship between Organization and Event
+const createOrganization = function(organization)  {
+  return db.Organization.create(organization).then(docOrganization => {
+    console.log("\n>> Created Organization:\n", docOrganization);
+  });
+};
 
-//M:M Relationship
+const newEvent = function(organizationId, event) {
+  console.log("\n>>  Add Event:\n", event);
+  return db.Organization.findByIdAndUpdate(
+    organizationId,
+    {
+      $push: {
+        events: {
+          eventname: event.name,
+          eventdate: event.date,
+          eventlocation: event.eventlocation,
+          city: event.city,
+          state: event.state,
+          website: event.website,
+          details: event.details,
+        }
+      }
+    },
+    { new: true, useFindAndModify: false }
+  );
+};
+
+// //TEST INFO for 1:M
+// const run = async function() {
+//   var organization = await createOrganization({
+//     orgname: 'Shawhizzles Shack of Splendor',
+//     email: 'shawhizzle@shackofsplendor.com',
+//     password: 'bringcats',
+//     image: 'http://placecage.com/200/200',
+//   });
+//   console.log('\n>> Organization:\n', organization);
+
+//   organization = await newEvent(organization._id, {
+//     eventname: "Cat Collection",
+//     eventdate: '4/20/2020',
+//     eventlocation: 'Shawhizzles Shack',
+//     city: 'Seattle',
+//     state: 'WA',
+//     website: 'www.shawhizzleshouseofsplendor.com',
+//     details: 'This may sound creepy, but we do NOT harm cats. We love them and want to catch em all and love them forever'
+//   });
+//   console.log("\n>> Organization:\n", organization)
+// };
+
+
+//M:M Relationship between User and Event
 const createEvent = function(event) {
   return db.Event.create(event).then(docEvent => {
     console.log("\n>> Created Event:\n", docEvent);
@@ -57,7 +107,7 @@ const addEventToUser = function(userId, event) {
   );
 };
 
-// //TEST INFO
+// //TEST INFO for M:M
 // const run = async function() {
 //   var event1 = await createEvent({
 //    eventname: 'event1',
@@ -74,7 +124,7 @@ const addEventToUser = function(userId, event) {
 //     lastname: "Sohrahizzle",
 //     password: 'manizzle',
 //     email: 'shawhizzle@manizzzzzzle.com',
-//     details: 'yo, i got hella cute cats, and im cool af. Imma come make this party littttttt!',
+//     details: 'yo, i got hella cute cats, and im cool af. Come visit!',
 //     eventname: 'event1'
 //   });
 
@@ -83,7 +133,7 @@ const addEventToUser = function(userId, event) {
 //     lastname: 'Boo',
 //     password: 'mydadisthebest',
 //     email: 'erosboo@shawhizzzzzzzle.com',
-//     details: 'yeah, you heard my dad. We gon fire this uppp! We cute af and hes the coolest cat we know.',
+//     details: 'yeah, you heard my dad. Come visit us. We cute af and hes the coolest cat we know.',
 //     eventname: 'event1'
 //   });
     

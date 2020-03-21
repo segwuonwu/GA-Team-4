@@ -36,12 +36,12 @@ const eventSchema = new mongoose.Schema({
            ref: 'User' 
         }
     ],
-    organization: [
+    organization: 
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Organization'
         }
-    ]
+    
 });
 
 // Use schema to create model
