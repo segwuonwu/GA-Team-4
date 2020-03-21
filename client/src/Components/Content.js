@@ -19,7 +19,7 @@ function Content(props) {
       <Route path="/profile" exact={true} render={() => <Profile user={props.user ? props.user : null} />} />
       <Route path="/profile/edit" render={() => <EditProfile user={props.user ? props.user : null} />} />
       <Route path="/search" component={SearchResults} />
-      <Route path="/organization/:id" component={Organization} />
+      <Route path="/organization/:orgId" render={() => <Organization user={props.user ? props.user : null} /> } />
     </Switch>
   );
 }
