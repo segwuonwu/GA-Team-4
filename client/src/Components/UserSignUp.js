@@ -29,7 +29,6 @@ import {Redirect} from 'react-router-dom';
       margin: theme.spacing(3, 0, 2),
     },
   }));
-  const classes = useStyles()
 
   const SignUp = props => {
     // Declare and initialize state variables
@@ -38,6 +37,8 @@ import {Redirect} from 'react-router-dom';
     let [email, setEmail] = useState('')
     let [message, setMessage] = useState('')
     let [password, setPassword] = useState('')
+    
+    const classes = useStyles()
   
   
       useEffect(()=>{
@@ -146,7 +147,7 @@ import {Redirect} from 'react-router-dom';
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={e => setValue(e.target.value)}
+            onClick={() => handleSubmit()}
           >
             Get Volunteering!
           </Button>
