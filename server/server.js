@@ -244,7 +244,7 @@ const addOrganizationToUser = function(userId, organization) {
     return db.User.findById(id).populate('organizations');
   };
   
-  const getOrganizationsWithPopulate = function(id) {
+  const getOrganizationWithPopulate = function(id) {
     return db.Organization.findById(id).populate('Users');
   };
 // };
