@@ -17,34 +17,85 @@ const useStyles = makeStyles(theme => ({
 
 function Home(props) {
   const [events, setEvents] = useState(null);
-  const [error, setError] = useState(null);
+  const [organizations, setOrganizations] = useState(null);
+  const [error, setError] = useState({
+    events: null,
+    organizations: null
+  });
   const classes = useStyles();
 
+  
   useEffect(() => {
-    fetch()
+    // Call events for a user
+    fetch("")
       .then(response => {
         if (!response.ok) {
-          setError("Couldn't reach database");
+          setError({
+            events: "Couldn't reach database",
+            organizations: error.organizations
+          });
           return;
         }
         return response.json();
       }).then(events => {
         if (events.length < 1) {
-          setError("No event to show right now");
+          setError({
+            events: "No event to show right now",
+            organizations: error.organizations
+          });
         } else {
           setEvents(events);
         }
       }).catch(err => {
-        setError("Couldn't retrieve events")
+        setError({
+          events: "Couldn't retrieve events",
+          organizations: error.organizations
+        })
         console.log(err);
-      })
+      });
+
+    // Call organizations for a user
+    fetch("")
+      .then(response => {
+        if (!response.ok) {
+          setError({
+            events: error.events,
+            organizations: "Couldn't reach database"
+          });
+          return;
+        }
+        return response.json();
+      }).then(organizations => {
+        if (organizations.length < 1) {
+          setError({
+            events: error.events,
+            organizations: "No organizations to show right now"
+          });
+        } else {
+          setOrganizations(organizations);
+        }
+      }).catch(err => {
+        setError({
+          events: error.events,
+          organizations: "Couldn't retrieve organizations"
+        });
+        console.log(err);
+      });
   }, []);
 
   const eventList = () => {
     if (events) {
       return <SideList listType="event" events={events} />
     } else {
-      return <ErrorMessage error={error} />
+      return <ErrorMessage error={error.events} />
+    }
+  }
+
+  const organizationList = () => {
+    if (organizations) {
+      return <SideList listType="organization" organizations={[]} />
+    } else {
+      return <ErrorMessage error={error.organizations} />
     }
   }
 
@@ -71,7 +122,7 @@ function Home(props) {
             events={[]} />
         </Grid>
       </Grid>
-      <SideList listType="organization" organizations={[]} />
+      { organizationList() }
     </div>
   );
 }
