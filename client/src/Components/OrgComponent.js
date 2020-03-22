@@ -1,5 +1,6 @@
 import React from "react";
-import { ListItem, ListItemText, ListItemAvatar, Avatar } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { ListItem, ListItemText, ListItemAvatar, Avatar, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import PlaceholderIcon from "@material-ui/icons/Person"
 
@@ -23,6 +24,10 @@ function OrgComponent(props) {
         <ListItemText 
           primary={props.organization.name}
           secondary={props.organization.description} />
+        <Button
+          component={Link}
+          to={`/organization/${props._id}`}
+          ></Button>
       </ListItem>
     );
   }

@@ -37,11 +37,12 @@ const SignUp = props => {
     let [email, setEmail] = useState('')
     let [message, setMessage] = useState('')
     let [password, setPassword] = useState('')
+    
+    const classes = useStyles()
   
-  
-      useEffect(()=>{
-        setMessage('')   
-      }, [firstname, lastname, email, password])
+    useEffect(()=>{
+      setMessage('')   
+    }, [firstname, lastname, email, password])
   
     const handleSubmit = e => {
       e.preventDefault()
@@ -139,7 +140,6 @@ const SignUp = props => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            // onClick={handleSubmit}
           >
             Get Volunteering!
           </Button>
