@@ -15,6 +15,14 @@ const eventSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    city: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
+        required: true
+    },
     website: {
         type: String
     },
@@ -22,13 +30,22 @@ const eventSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    organization: {
-        type: String
-    }
+    user: [
+        {
+           type: mongoose.Schema.Types.ObjectId,
+           ref: 'User' 
+        }
+    ],
+    organization: 
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Organization'
+        }
+    
 });
 
 // Use schema to create model
-const Event = mongoose.model('Event', eventSchema)
+const Event = mongoose.model('event', eventSchema)
 
 // Export event model
 module.exports = Event;

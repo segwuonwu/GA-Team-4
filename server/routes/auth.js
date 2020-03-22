@@ -26,13 +26,13 @@ router.post('/login', (req, res) => {
     }).catch( err => {
         console.log('Error in POST /auth/login', err)
         res.status(503).send({ message: 'Database or server-side error'})
-    })
-})
+    });
+});
 
 // POST to /auth/signup (create user and generate token)
 router.post('/signup', (req, res) => {
     console.log(req.body)
-    //make sure user is not a duplicate
+    //make sure user does not exist and is not a duplicate
     db.User.findOne({ email: req.body.email })
     .then(user => {
         //if user exists, do not let them make another account
@@ -47,6 +47,7 @@ router.post('/signup', (req, res) => {
             let token = jwt.sign(newUser.toJSON(), process.env.JWT_SECRET, {
                 expiresIn: 60 * 60 * 8 //user must relog in 8 hours
             })
+            //send token
             res.send({ token })
         }).catch(err => {
             console.log('Error when creating user', err)
@@ -55,15 +56,15 @@ router.post('/signup', (req, res) => {
             } else {
                 res.status(500).send({ message: 'Error creating user' })
             }
-        })
+        });
     })
     .catch(err => {
         console.log('Error in POST /auth/signup', err)
         res.status(503).send({ message: 'Database or server error' })
-    })
-})
+    });
+});
 
-router.get('/profile', (req, res) => {
+router.get('/home', (req, res) => {
     res.send({ message: 'Secret message for people who are logged in only! '}) 
 });
 

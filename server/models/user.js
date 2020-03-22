@@ -25,10 +25,18 @@ const userSchema = mongoose.Schema({
         type: String,
         default: 'http://www.placecage.com/200/200'
     },
-    userevent: {
+    event: [
+        {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Event'
     }
+],
+    organization: [
+        {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Organization'
+    }
+]
 });
 
 //using bcrypt to hash the password

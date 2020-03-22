@@ -12,7 +12,7 @@ router.get('/events', (req, res) => {
         .then(events => {
             res.send(events);
     }).catch(err => res.send({message: 'Error in getting all events', err}))
-})
+});
 
 //Show specific Event. 
 router.get('/events/:id', (req, res) => {
@@ -20,7 +20,7 @@ router.get('/events/:id', (req, res) => {
         .then(events => {
             res.send(events);
     }).catch(err => res.send({message: 'Error in getting event', err}))
-})
+});
 
 //Take form data to add a new events
 router.post('/add', (req, res) => {
@@ -45,6 +45,14 @@ router.post('/add', (req, res) => {
     });
 });
 
+// Edit event form
+router.get('/:id/edit', (req, res) => {
+    db.Organization.findById(req.params.id)
+    .then(event => {
+        res.render('organisations/edit', { event: event })
+    });
+});
+
 // update an event
 router.put('/events/:id', (req, res) => {
     db.Event.findById(req.params.id)
@@ -57,7 +65,7 @@ router.put('/events/:id', (req, res) => {
         res.send({message :'An error occured while updating event', err});
     });
     
-})
+});
 
 // Delete an event
 router.delete('/events/:id', (req, res) => {
@@ -69,7 +77,7 @@ router.delete('/events/:id', (req, res) => {
         res.redirect('/organizations');
     })
     .catch(err => res.send({message: 'Error deleting event', err}))
-})
+});
     
 
     
