@@ -8,6 +8,7 @@ import Profile from "../pages/ProfileUser";
 import EditProfile from "../pages/EditProfileUser";
 import SearchResults from "../pages/SearchResultsUser";
 import Organization from "../pages/OrganizationUser";
+import NotFound from "../pages/NotFound";
 
 function Content(props) {
   return(
