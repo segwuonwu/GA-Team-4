@@ -58,10 +58,10 @@ function Login(props) {
         'Content-Type': 'application/json'
       }
     })
-    // setMessage to erroe if not authenticate
+    // setMessage to error if not authenticated
       .then(response => {
         if (!response.ok) {
-          setMessage(`${response.status}: ${response.statusText}`)
+          setMessage(response.statusText)
           return;
         }
 
@@ -93,7 +93,7 @@ function Login(props) {
         <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <TextField
+            <TextField
                 variant="outlined"
                 required
                 fullWidth
@@ -115,7 +115,6 @@ function Login(props) {
                 onChange={e => setPassword(e.target.value)}
               />
             </Grid>
-            
           </Grid>
           <Button
             type="submit"

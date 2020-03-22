@@ -60,7 +60,7 @@ const SignUp = props => {
       })
        .then(response => {
          if (!response.ok){
-           setMessage("User already exist")
+           setMessage(response.statusText)
            return;
          }
   
