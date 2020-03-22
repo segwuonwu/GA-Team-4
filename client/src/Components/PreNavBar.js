@@ -5,7 +5,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Logo from "./Logo";
 
-function PreNavBar(props) {
+function PreNavBar() {
+  // https://material-ui.com/components/app-bar/
+  // https://material-ui.com/getting-started/templates/
   
   return (
     <div>
