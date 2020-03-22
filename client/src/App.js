@@ -27,7 +27,7 @@ const theme = createMuiTheme({
 function App(props) {
   // Declare state variables
   const [user, setUser] = useState(null)
-  //const [authStatus, setAuthStatus] = useState(true);
+  const [authStatus, setAuthStatus] = useState(user);
 
 
   useEffect(() => {
@@ -60,19 +60,16 @@ function App(props) {
     }
   }
 
-  // function setNav() {
-  //   return authStatus ? <PostAuthNav updateUser={updateUser} user={user}/> : <PreAuthNav updateUser={updateUser} user={user}/>;
-  // }
+  function setNav() {
+    return authStatus ? <PostAuthNav updateUser={updateUser} user={user}/> : <PreAuthNav updateUser={updateUser} user={user}/>;
+  }
 
   return (
     <Router>
       <div className="App">
         <ThemeProvider theme={theme}>
-          {/* {setNav()} */}
-          <PreAuthNav updateUser={updateUser} user={user} />
-          <main>
-            <Content updateUser={updateUser} user={user}/>
-          </main>
+          {setNav()}
+          <Content updateUser={updateUser} user={user}/>
           <Footer/>
         </ThemeProvider>
       </div>

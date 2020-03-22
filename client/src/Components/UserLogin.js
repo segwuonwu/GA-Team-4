@@ -65,7 +65,7 @@ function Login(props) {
           setMessage(`${response.status}: ${response.statusText}`)
           return;
         }
-        
+
         response.json().then(result => {
           props.updateUser(result.token);
         })

@@ -28,8 +28,6 @@ import { Redirect } from 'react-router-dom';
       margin: theme.spacing(3, 0, 2),
     },
   }));
-  
-  
 
 const SignUp = props => {
     const classes = useStyles()

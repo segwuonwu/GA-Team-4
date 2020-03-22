@@ -2,7 +2,7 @@ import React from "react";
 import UserSignUp from "../Components/UserSignUp";
 
 
-function SignupUser() {
+function SignupUser(props) {
   return (
     <div>
       <UserSignUp />

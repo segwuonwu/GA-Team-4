@@ -6,7 +6,7 @@ let router = require('express').Router()
 //POST /auth/login (find user and send token)
 router.post('/login', (req, res) => {
     console.log(req.body)
-    db.User.findOne({ email: req.body.emaili })
+    db.User.findOne({ email: req.body.email})
     .then(user => {
         //make sure user exists and has a password
         if (!user || !user.password) {
@@ -14,7 +14,7 @@ router.post('/login', (req, res) => {
         }
 
         //check if password is correct
-        if (!user.isValiidPassword(req.body.password)) {
+        if (!user.isValidPassword(req.body.password)) {
             return res.status(401).send({ message: 'Invalid Credentials' })
         }
 

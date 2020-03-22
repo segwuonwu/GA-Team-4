@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { AppBar, Toolbar, Button } from "@material-ui/core";
 import Searchbar from "./Searchbar";
+import Logo from "./Logo";
 
 function LogNavBar(props) {
   const handleLogout = e => {
@@ -15,6 +16,7 @@ function LogNavBar(props) {
     return (
       <AppBar position="static">
         <Toolbar>
+          <Logo link="/" />
           <Searchbar />
           <Button
             color="inherit"
