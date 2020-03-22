@@ -7,8 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import {Redirect} from 'react-router-dom';
-
+import { Redirect } from 'react-router-dom';
 
   const useStyles = makeStyles(theme => ({
     paper: {
@@ -30,7 +29,8 @@ import {Redirect} from 'react-router-dom';
     },
   }));
 
-  const SignUp = props => {
+const SignUp = props => {
+    const classes = useStyles()
     // Declare and initialize state variables
     let [firstname, setFirstname] = useState('')
     let [lastname, setLastname] = useState('')
@@ -38,18 +38,15 @@ import {Redirect} from 'react-router-dom';
     let [message, setMessage] = useState('')
     let [password, setPassword] = useState('')
     
-    const classes = useStyles()
+  //  const classes = useStyles()
   
+    useEffect(()=>{
+      setMessage('')   
+    }, [firstname, lastname, email, password])
   
-      useEffect(()=>{
-        setMessage('')   
-      }, [firstname, lastname, email, password])
-  
-      
-
     const handleSubmit = e => {
       e.preventDefault()
-      fetch(`${process.env.REACT_APP_SERVER_URL}/server/auth`,{
+      fetch(`${process.env.REACT_APP_SERVER_URL}/auth/signup`,{
         method: 'POST',
         body: JSON.stringify({
           firstname,
@@ -63,11 +60,12 @@ import {Redirect} from 'react-router-dom';
       })
        .then(response => {
          if (!response.ok){
-           setMessage("Thank you for joining")
+           setMessage(response.statusText)
+           return;
          }
   
          response.json().then(result => {
-          props.createUser(result.token);
+          props.updateUser(result.token);
         })
        })
       .catch(err => {
@@ -81,25 +79,25 @@ import {Redirect} from 'react-router-dom';
     }
 
   return (
-   
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
           New User Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <span className="red">{message}</span>
+        <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                name="firstName"
+                name="firstname"
                 variant="outlined"
                 required
                 fullWidth
                 id="firstName"
                 label="First Name"
                 autoFocus
-                onClick={e => setFirstname(e.target.value)}
+                onChange={e => setFirstname(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -110,8 +108,7 @@ import {Redirect} from 'react-router-dom';
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                onClick={e => setLastname(e.target.value)}
-
+                onChange={e => setLastname(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -122,9 +119,8 @@ import {Redirect} from 'react-router-dom';
                 id="email"
                 label="Email Address"
                 name="email"
-                onClick={e => setEmail(e.target.value)}
-
-              />
+                onChange={e => setEmail(e.target.value)}
+                />
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -135,11 +131,9 @@ import {Redirect} from 'react-router-dom';
                 label="Password"
                 type="password"
                 id="password"
-                onClick={e => setPassword(e.target.value)}
-
+                onChange={e => setPassword(e.target.value)}
               />
             </Grid>
-            
           </Grid>
           <Button
             type="submit"
@@ -147,13 +141,12 @@ import {Redirect} from 'react-router-dom';
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={() => handleSubmit()}
           >
             Get Volunteering!
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/login" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>

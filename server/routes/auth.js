@@ -6,7 +6,7 @@ let router = require('express').Router()
 //POST /auth/login (find user and send token)
 router.post('/login', (req, res) => {
     console.log(req.body)
-    db.User.findOne({ email: req.body.email })
+    db.User.findOne({ email: req.body.email})
     .then(user => {
         //make sure user exists and has a password
         if (!user || !user.password) {
@@ -40,15 +40,39 @@ router.post('/signup', (req, res) => {
             return res.status(409).send({ message: 'Email address is in use!' })
         }
 
-        //if user doesn't exist, proceed
         db.User.create(req.body)
         .then(newUser => {
-            //make user a token
-            let token = jwt.sign(newser.toJSON(), process.env.JWT_SECRET, {
-                expiresIn: 60 * 60 * 8 //user must relog in 8 hours
-            })
-            //send token
-            res.send({ token })
+            db.Organization.find().then(organizations => {
+                db.Organization.findByIdAndUpdate(organizations[0]._id, 
+                    { $push: { users: newUser._id }},
+                    { new: true, useFindAndModify: false }
+                ).then(organization => {
+                    db.User.findByIdAndUpdate(newUser._id, 
+                        { $push: { organizations: organization._id }},
+                        { new: true, useFindAndModify: false }
+                    ).then(user => {
+                        //make user a token
+                        let token = jwt.sign(newUser.toJSON(), process.env.JWT_SECRET, {
+                            expiresIn: 60 * 60 * 8 //user must relog in 8 hours
+                        })
+                        //send token
+                        res.send({ token })
+                    }).catch(err => {
+                        console.log("couldn't add organization to user");
+                    })
+                }).catch(err => {
+                    console.log("couldn't add user to organization");
+                });
+            }).catch(err => {
+                console.log("Couldn't add organization");
+
+                //make user a token
+                let token = jwt.sign(newUser.toJSON(), process.env.JWT_SECRET, {
+                    expiresIn: 60 * 60 * 8 //user must relog in 8 hours
+                })
+                //send token
+                res.send({ token })
+            });
         }).catch(err => {
             console.log('Error when creating user', err)
             if (err.name  === 'ValidationError') {

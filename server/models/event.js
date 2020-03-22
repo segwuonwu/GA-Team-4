@@ -30,7 +30,7 @@ const eventSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    user: [
+    users: [
         {
            type: mongoose.Schema.Types.ObjectId,
            ref: 'User' 
@@ -45,7 +45,7 @@ const eventSchema = new mongoose.Schema({
 });
 
 // Use schema to create model
-const Event = mongoose.model('event', eventSchema)
+const Event = mongoose.model('Event', eventSchema)
 
 // Export event model
 module.exports = Event;

@@ -12,13 +12,13 @@ import Organization from "../pages/OrganizationUser";
 function Content(props) {
   return(
     <Switch>
-      <Route path="/" exact={true} component={Landing} />
-      <Route path="/login" component={Login} />
-      <Route path="/signup" component={Signup} />
+      <Route path="/" exact={true} render={() => <Landing user={props.user ? props.user : null} /> } />
+      <Route path="/login" render={() => <Login user={props.user} updateUser={props.updateUser} /> } />
+      <Route path="/signup" render={() => <Signup user={props.user} updateUser={props.updateUser} />}  />
       <Route path="/home" render={() => <Home user={props.user ? props.user : null} />} />
       <Route path="/profile" exact={true} render={() => <Profile user={props.user ? props.user : null} />} />
       <Route path="/profile/edit" render={() => <EditProfile user={props.user ? props.user : null} />} />
-      <Route path="/search" component={SearchResults} />
+      <Route path="/search" render={() => <SearchResults user={props.user ? props.user : null} /> } />
       <Route path="/organization/:orgId" render={() => <Organization user={props.user ? props.user : null} /> } />
     </Switch>
   );

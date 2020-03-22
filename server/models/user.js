@@ -25,13 +25,13 @@ const userSchema = mongoose.Schema({
         type: String,
         default: 'http://www.placecage.com/200/200'
     },
-    event: [
+    events: [
         {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Event'
     }
 ],
-    organization: [
+    organizations: [
         {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Organization'
@@ -63,7 +63,7 @@ userSchema.methods.isValidPassword = function (typedPassword) {
 };
 
 // Use schema to create model
-const user = mongoose.model('user', userSchema)
+const user = mongoose.model('User', userSchema)
 
 // Export user model
 module.exports = user;
