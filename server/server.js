@@ -214,29 +214,30 @@ const addOrganizationToUser = function(userId, organization) {
 //     email: 'isabelle@nolastname.com'
 //   });
 
-  var organization = await addUserToOrganization(org1._id, user1);
+  var organization = addUserToOrganization(org1._id, user1);
   console.log("\n>> org1:\n");
 
-  var userorg = await addOrganizationToUser(user1._id, org1);
+  var userorg = addOrganizationToUser(user1._id, org1);
   console.log("\n user1:\n", user);
+  
 
-  organization = await addUserToOrganization(org1._id, user2);
+  organization = addUserToOrganization(org1._id, user2);
   console.log('\n>> org1:\n', organization);
 
-  userorg = await addUserToOrganization(user2._id, org1);
+  userorg = addUserToOrganization(user2._id, org1);
   console.log("\n>> user2:\n", user );
 
-  var organization2 = await createOrganization({
+  var organization2 = createOrganization({
     orgname: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Organization'
     }
   });
 
-  organization = await addUserToOrganization(organization2._id, user2);
+  organization = addUserToOrganization(organization2._id, user2);
   console.log('\n>> organization2:\n', organization);
 
-  user = await addOrganizationToUser(user2._id, organization2);
+  user = addOrganizationToUser(user2._id, organization2);
   console.log('\n>> user2:\n', user);
 // };
 
