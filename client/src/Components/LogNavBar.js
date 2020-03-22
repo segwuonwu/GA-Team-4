@@ -13,23 +13,23 @@ function LogNavBar(props) {
     props.updateUser();
   }
 
-    return (
-      <AppBar position="static">
-        <Toolbar>
-          <Logo link="/" />
-          <Searchbar />
-          <Button
-            color="inherit"
-            component={Link}
-            to="/home">Profile</Button>
-          <Button
-            color="inherit"
-            component={Link}
-            to="/" onClick={handleLogout}>Logout</Button>
-        </Toolbar>
-      </AppBar>
-    );
-  }
+  return (
+    <AppBar position="static">
+      <Toolbar>
+        <Logo link="/" />
+        <Searchbar />
+        <Button
+          color="inherit"
+          component={Link}
+          to="/home">Profile</Button>
+        <Button
+          color="inherit"
+          component={Link}
+          to="/" onClick={handleLogout}>Logout</Button>
+      </Toolbar>
+    </AppBar>
+  );
+}
   
   export default LogNavBar;
 

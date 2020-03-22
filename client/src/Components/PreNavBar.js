@@ -9,29 +9,6 @@ import Logo from "./Logo";
 
 function PreNavBar(props) {
   
-  // let links = (
-  //   <span>
-  //       <Toolbar>
-  //         <Button 
-  //           color="inherit"
-  //           component={Link}
-  //           to="/login">Login</Button>
-  //         <Button 
-  //           color="inherit"
-  //           component={Link}
-  //           to="/signup">Sign Up</Button>
-  //       </Toolbar>
-    
-  //   </span>
-  // )
-
-  // // If the user is logged in, show profile page and logout links
-  // if (props.user) {
-  //   links = (
-  //       <Logout />
-  //   )
-  // }
-
   return (
     <div>
       <AppBar position="static">

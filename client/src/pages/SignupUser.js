@@ -5,7 +5,7 @@ import UserSignUp from "../Components/UserSignUp";
 function SignupUser(props) {
   return (
     <div>
-      <UserSignUp />
+      <UserSignUp user={props.user} updateUser={props.updateUser}/>
     </div>
   );
 }

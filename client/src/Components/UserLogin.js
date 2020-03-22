@@ -35,7 +35,6 @@ function Login(props) {
   
   const classes = useStyles()
 
-
   // Declare and initialize state variables
   let [email, setEmail] = useState('')
   let [message, setMessage] = useState('')
@@ -124,7 +123,6 @@ function Login(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            // onClick={handleSubmit}
           >
             Log in
           </Button>

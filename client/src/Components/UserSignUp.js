@@ -38,7 +38,7 @@ const SignUp = props => {
     let [message, setMessage] = useState('')
     let [password, setPassword] = useState('')
     
-    const classes = useStyles()
+  //  const classes = useStyles()
   
     useEffect(()=>{
       setMessage('')   
@@ -60,7 +60,8 @@ const SignUp = props => {
       })
        .then(response => {
          if (!response.ok){
-           setMessage("Thank you for joining")
+           setMessage("User already exist")
+           return;
          }
   
          response.json().then(result => {
@@ -96,7 +97,7 @@ const SignUp = props => {
                 id="firstName"
                 label="First Name"
                 autoFocus
-                onClick={e => setFirstname(e.target.value)}
+                onChange={e => setFirstname(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -107,7 +108,7 @@ const SignUp = props => {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                onClick={e => setLastname(e.target.value)}
+                onChange={e => setLastname(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -118,8 +119,8 @@ const SignUp = props => {
                 id="email"
                 label="Email Address"
                 name="email"
-                onClick={e => setEmail(e.target.value)}
-              />
+                onChange={e => setEmail(e.target.value)}
+                />
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -130,7 +131,7 @@ const SignUp = props => {
                 label="Password"
                 type="password"
                 id="password"
-                onClick={e => setPassword(e.target.value)}
+                onChange={e => setPassword(e.target.value)}
               />
             </Grid>
           </Grid>

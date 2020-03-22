@@ -5,10 +5,10 @@ import { useLocation } from "react-router-dom";
 
 function SearchResultsUser() {
 
-const [results, setResults] = useState(null);  
-const [error, setError] = useState(null);
-const useQuery = () => {
-    return new URLSearchParams(useLocation().search);
+  const [results, setResults] = useState(null);  
+  const [error, setError] = useState(null);
+  const useQuery = () => {
+      return new URLSearchParams(useLocation().search);
   }
   const query = useQuery().get("query");
 //"https://codesandbox.io/s/react-router-query-parameters-mfh8p?from-embed"
@@ -45,7 +45,7 @@ const useQuery = () => {
       return;
   },[]);
 
-  }
+  
 
   return (
     <div>

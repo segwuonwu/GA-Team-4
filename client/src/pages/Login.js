@@ -1,11 +1,11 @@
 import React from "react";
 import UserLogin from "../Components/UserLogin";
 
-function userLogin() {
+function userLogin(props) {
   
   return (
     <div>
-      <UserLogin />
+      <UserLogin user={props.user} updateUser={props.updateUser}/>
     </div>
   );
 }
