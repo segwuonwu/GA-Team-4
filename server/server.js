@@ -170,7 +170,7 @@ const getEventWithPopulate = function(id) {
   return db.Event.findById(id).populate('users');
 };
 
-const getUserwithPopulate = function(id) {
+const getUserWithPopulate = function(id) {
   return db.User.findById(id).populate('events');
 };
 
@@ -239,6 +239,14 @@ const addOrganizationToUser = function(userId, organization) {
 
   user = addOrganizationToUser(user2._id, organization2);
   console.log('\n>> user2:\n', user);
+
+  const getUserWithPopulate = function(id) {
+    return db.User.findById(id).populate('organizations');
+  };
+  
+  const getOrganizationsWithPopulate = function(id) {
+    return db.Organization.findById(id).populate('Users');
+  };
 // };
 
 run();
