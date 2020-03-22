@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
+import { Redirect } from "react-router-dom";
 import { Typography } from "@material-ui/core";
 import SearchResList from "../Components/SearchResList";
 import { useLocation } from "react-router-dom";
 
-function SearchResultsUser() {
+function SearchResultsUser(props) {
 
   const [results, setResults] = useState(null);  
   const [error, setError] = useState(null);
@@ -46,6 +47,10 @@ function SearchResultsUser() {
       return;
   }
   },[]);
+
+  if (!props.user) {
+    return <Redirect to="/" />
+  }
 
   return (
     <div>

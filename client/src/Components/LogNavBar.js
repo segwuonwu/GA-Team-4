@@ -21,7 +21,7 @@ function LogNavBar(props) {
           <Button
             color="inherit"
             component={Link}
-            to="/home">Profile</Button>
+            to="/profile">Profile</Button>
           <Button
             color="inherit"
             component={Link}
