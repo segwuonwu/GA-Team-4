@@ -13,8 +13,9 @@ const useQuery = () => {
   const query = useQuery().get("query");
 //"https://codesandbox.io/s/react-router-query-parameters-mfh8p?from-embed"
   useEffect(()=>{
+    switch(query) {
     case "events":
-      fetch(events)
+      fetch("events")
         .then(response => {
           if (!response.ok) {
             setError ("Sorry something went wrong");
@@ -28,7 +29,7 @@ const useQuery = () => {
         })
         break;
       case "orginizations":
-    fetch(orginizations)
+    fetch("orginizations")
     .then(response => {
       if (!response.ok) {
         setError ("Oopsie Poos");
@@ -43,14 +44,13 @@ const useQuery = () => {
     break;
     default:
       return;
-  },[]);
-
   }
+  },[]);
 
   return (
     <div>
       <Typography>Search Result for {query}</Typography>
-      <SearchList items={ results ? results : [] } resultType={query} />
+      <SearchResList items={ results ? results : [] } resultType={query} />
     </div>
   )
 }
