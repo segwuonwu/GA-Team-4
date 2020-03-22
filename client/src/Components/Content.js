@@ -20,6 +20,7 @@ function Content(props) {
       <Route path="/profile/edit" render={() => <EditProfile user={props.user ? props.user : null} />} />
       <Route path="/search" render={() => <SearchResults user={props.user ? props.user : null} /> } />
       <Route path="/organization/:orgId" render={() => <Organization user={props.user ? props.user : null} /> } />
+      <Route path="*" component={NotFound} />
     </Switch>
   );
 }
