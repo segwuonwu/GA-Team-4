@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
         .then(events => {
             res.send(events);
     }).catch(err => res.send({message: 'Error in getting all events', err}))
-})
+});
 
 //Show specific Event. 
 router.get('/:id', (req, res) => {
@@ -16,7 +16,7 @@ router.get('/:id', (req, res) => {
         .then(events => {
             res.send(events);
     }).catch(err => res.send({message: 'Error in getting event', err}))
-})
+});
 
 //Take form data to add a new events
 router.post('/', (req, res) => {
@@ -46,8 +46,8 @@ router.get('/:id/edit', (req, res) => {
     db.Organization.findById(req.params.id)
     .then(event => {
         res.render('organisations/edit', { event: event })
-    })
-})
+    });
+});
 
 // update an event
 router.put('/:id', (req, res) => {
@@ -61,7 +61,7 @@ router.put('/:id', (req, res) => {
         res.send({message :'An error occured while updating event', err});
     });
     
-})
+});
 
 // Delete an event
 router.delete('/:id', (req, res) => {
@@ -73,6 +73,6 @@ router.delete('/:id', (req, res) => {
         res.redirect('/organizations');
     })
     .catch(err => res.send({message: 'Error deleting event', err}))
-})
+});
     
 module.exports = router;

@@ -16,10 +16,25 @@ const organizationSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    phonenumber: {
+        type: String
+    },
     image: {
         type: String,
         default: 'http://www.placekitten.com/200/200'
-    }
+    },
+    user: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ],
+    event: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Event'
+        }
+    ]
 })
 
 // Use schema to create model
