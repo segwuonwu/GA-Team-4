@@ -25,10 +25,14 @@ function Home(props) {
   });
   const classes = useStyles();
 
-  
   useEffect(() => {
     // Call events for a user
-    fetch("")
+    fetch(`${process.env.REACT_APP_SERVER_URL}/users/events`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.mernToken}`
+      }
+    })
       .then(response => {
         if (!response.ok) {
           setError({
@@ -41,7 +45,7 @@ function Home(props) {
       }).then(events => {
         if (events.length < 1) {
           setError({
-            events: "No event to show right now",
+            events: "No events to show right now",
             organizations: error.organizations
           });
         } else {
@@ -54,9 +58,16 @@ function Home(props) {
         })
         console.log(err);
       });
+  }, []);
 
+  useEffect(() => {
     // Call organizations for a user
-    fetch("")
+    fetch(`${process.env.REACT_APP_SERVER_URL}/users/organizations`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.mernToken}`
+      }
+    })
       .then(response => {
         if (!response.ok) {
           setError({
@@ -94,7 +105,7 @@ function Home(props) {
 
   const organizationList = () => {
     if (organizations) {
-      return <SideList listType="organization" organizations={[]} />
+      return <SideList listType="organization" organizations={organizations} />
     } else {
       return <ErrorMessage error={error.organizations} />
     }

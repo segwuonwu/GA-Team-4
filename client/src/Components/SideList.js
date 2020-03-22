@@ -25,7 +25,7 @@ function SideList(props) {
           <Typography>Affiliated Organizations</Typography>
           <List>{
             props.organizations.map((item, index) => {
-              return(<EventComponent organization={item} key={index} />)
+              return(<OrgComponent organization={item} key={index} />)
             })
             }
           </List>

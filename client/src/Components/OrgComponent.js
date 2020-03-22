@@ -18,16 +18,16 @@ function OrgComponent(props) {
       <ListItem className={classes.root}>
         <ListItemAvatar>
           <Avatar>
-            <PlaceholderIcon />
+            {props.organization.image? <img src={props.organization.image} /> : <PlaceholderIcon />}
           </Avatar>
         </ListItemAvatar>
         <ListItemText 
-          primary={props.organization.name}
-          secondary={props.organization.description} />
+          primary={props.organization.orgname}
+          secondary={props.organization.email} />
         <Button
           component={Link}
-          to={`/organization/${props._id}`}
-          ></Button>
+          to={`/organization/${props.organization._id}`}
+          >Show More</Button>
       </ListItem>
     );
   }

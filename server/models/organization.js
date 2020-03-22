@@ -23,13 +23,13 @@ const organizationSchema = new mongoose.Schema({
         type: String,
         default: 'http://www.placekitten.com/200/200'
     },
-    user: [
+    users: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         }
     ],
-    event: [
+    events: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Event'
@@ -38,7 +38,7 @@ const organizationSchema = new mongoose.Schema({
 })
 
 // Use schema to create model
-const Organization = mongoose.model('organization', organizationSchema)
+const Organization = mongoose.model('Organization', organizationSchema)
 
 // Export organization Model
 module.exports = Organization;
