@@ -33,7 +33,7 @@ const createOrganization = function(organization)  {
 };
 
 const newEvent = function(organizationId, event) {
-  console.log("\n>>  Add Event:\n", event);
+  console.log("\n>> Add Event:\n", event);
   return db.Organization.findByIdAndUpdate(
     organizationId,
     {
