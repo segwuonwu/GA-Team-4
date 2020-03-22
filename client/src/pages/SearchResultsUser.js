@@ -14,48 +14,69 @@ function SearchResultsUser(props) {
   const query = useQuery().get("query");
 //"https://codesandbox.io/s/react-router-query-parameters-mfh8p?from-embed"
   useEffect(()=>{
+    console.log(query);
     switch(query) {
-    case "events":
-      fetch("events")
-        .then(response => {
-          if (!response.ok) {
-            setError ("Sorry something went wrong");
-            return;
-          } return response.json();
-        }).then(events => {
-          setResults(events);
-        }).catch(err => {
-          setError("Can't find any Events")
-          console.log(err);
+      case "events":
+      case "event":
+        fetch(`${process.env.REACT_APP_SERVER_URL}/events`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.mernToken}`
+          }
         })
+          .then(response => {
+            if (!response.ok) {
+              setError ("Unable to connect to database");
+              return;
+            } 
+            return response.json();
+          }).then(events => {
+            setResults(events);
+          }).catch(err => {
+            setError("Unable to retrieve results from database")
+            console.log(err);
+          })
         break;
-      case "orginizations":
-    fetch("orginizations")
-    .then(response => {
-      if (!response.ok) {
-        setError ("Oopsie Poos");
-        return;
-      } return response.json();
-    }).then(orginizations => {
-      setResults(orginizations);
-    }).catch(err => {
-      setError("Cant find the Org you're looking for")
-      console.log(err);
-    })
-    break;
-    default:
-      return;
-  }
-  },[]);
+      case "organizations":
+      case "organization":
+        fetch(`${process.env.REACT_APP_SERVER_URL}/organizations`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.mernToken}`
+          }
+        })
+          .then(response => {
+            if (!response.ok) {
+              setError ("Unable to connect to database");
+              return;
+            } return response.json();
+          }).then(organizations => {
+            setResults(organizations);
+          }).catch(err => {
+            setError("Unable to retrieve results from database")
+            console.log(err);
+          })
+        break;
+      default:
+        setError("No results found");
+    }
+  },[query]);
 
-  if (!props.user) {
-    return <Redirect to="/" />
-  }
+  setTimeout(() => {
+    if (!props.user) {
+      return <Redirect to='/' />
+    }
+  }, 5000);
+
+  console.log(results);
 
   return (
     <div>
       <Typography>Search Result for {query}</Typography>
-      <SearchResList items={ results ? results : [] } resultType={query} />
+      { error ? 
+        <div>{error}</div> : 
+        <SearchResList items={ results ? results : [] } resultType={query} /> 
+      }
     </div>
   )
 }
