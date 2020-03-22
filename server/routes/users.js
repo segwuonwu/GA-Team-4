@@ -9,10 +9,19 @@ router.get('/', (req, res) => {
 
 // page to get a list of events
 router.get('/events', (req, res) => {
-    db.User.findById(req.user._id).populate("event")
+    db.User.findById(req.user._id).populate("events")
         .then(updatedUser => {
             res.send(updatedUser.events);
         }).catch(err => res.send({message: 'Error in getting all events', err}))
+});
+
+router.get("/organizations", (req, res) => {
+    db.User.findById(req.user._id).populate("organizations")
+    .then(updatedUser => {
+        res.send(updatedUser.organizations);
+    }).catch(err => {
+        res.send({ message: "Error in getting all organizations" });
+    });
 });
 
 //Show specific Event. 

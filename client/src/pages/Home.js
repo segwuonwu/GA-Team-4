@@ -62,7 +62,12 @@ function Home(props) {
 
   useEffect(() => {
     // Call organizations for a user
-    fetch("")
+    fetch(`${process.env.REACT_APP_SERVER_URL}/users/organizations`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.mernToken}`
+      }
+    })
       .then(response => {
         if (!response.ok) {
           setError({
@@ -100,7 +105,7 @@ function Home(props) {
 
   const organizationList = () => {
     if (organizations) {
-      return <SideList listType="organization" organizations={[]} />
+      return <SideList listType="organization" organizations={organizations} />
     } else {
       return <ErrorMessage error={error.organizations} />
     }
