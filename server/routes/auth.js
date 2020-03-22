@@ -14,7 +14,7 @@ router.post('/login', (req, res) => {
         }
 
         //check if password is correct
-        if (!user.isValiidPassword(req.body.password)) {
+        if (!user.isValidPassword(req.body.password)) {
             return res.status(401).send({ message: 'Invalid Credentials' })
         }
 
