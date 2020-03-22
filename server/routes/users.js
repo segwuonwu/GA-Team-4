@@ -9,10 +9,10 @@ router.get('/', (req, res) => {
 
 // page to get a list of events
 router.get('/events', (req, res) => {
-    db.Event.find({})
-        .then(events => {
-            res.send(events);
-    }).catch(err => res.send({message: 'Error in getting all events', err}))
+    db.User.findById(req.user._id).populate("event")
+        .then(updatedUser => {
+            res.send(updatedUser.events);
+        }).catch(err => res.send({message: 'Error in getting all events', err}))
 });
 
 //Show specific Event. 
@@ -35,8 +35,6 @@ router.delete('/events/:id', (req, res) => {
     })
     .catch(err => res.send({message: 'Error deleting event', err}))
 });
-    
-
 
 module.exports = router;
 
