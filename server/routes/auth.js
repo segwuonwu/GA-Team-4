@@ -6,7 +6,7 @@ let router = require('express').Router()
 //POST /auth/login (find user and send token)
 router.post('/login', (req, res) => {
     console.log(req.body)
-    db.User.findOne({ email: req.body.email })
+    db.User.findOne({ email: req.body.email})
     .then(user => {
         //make sure user exists and has a password
         if (!user || !user.password) {
@@ -44,7 +44,7 @@ router.post('/signup', (req, res) => {
         db.User.create(req.body)
         .then(newUser => {
             //make user a token
-            let token = jwt.sign(newser.toJSON(), process.env.JWT_SECRET, {
+            let token = jwt.sign(newUser.toJSON(), process.env.JWT_SECRET, {
                 expiresIn: 60 * 60 * 8 //user must relog in 8 hours
             })
             //send token

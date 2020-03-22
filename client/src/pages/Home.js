@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import { Typography, Grid, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Calendar, momentLocalizer } from "react-big-calendar";
@@ -97,6 +98,10 @@ function Home(props) {
     } else {
       return <ErrorMessage error={error.organizations} />
     }
+  }
+
+  if (!props.user) {
+    return <Redirect to="/" />
   }
 
   return (

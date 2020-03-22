@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-
 import Logo from "./Logo";
 
 function PreNavBar() {
+  // https://material-ui.com/components/app-bar/
+  // https://material-ui.com/getting-started/templates/
+  
   return (
     <div>
       <AppBar position="static">

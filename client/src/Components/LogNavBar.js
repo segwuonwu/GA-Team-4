@@ -1,14 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { AppBar, Toolbar, Button } from "@material-ui/core";
 import Searchbar from "./Searchbar";
 import Logo from "./Logo";
 
-function LogNavBar() {
+function LogNavBar(props) {
+  const handleLogout = e => {
+    e.preventDefault()
+    // Remove the token from localstorage 
+    localStorage.removeItem('mernToken')
+    // Update the state of the App
+    props.updateUser();
+  }
+
     return (
       <AppBar position="static">
         <Toolbar>
-          <Logo link="/home" />
+          <Logo link="/" />
           <Searchbar />
           <Button
             color="inherit"
@@ -17,7 +25,7 @@ function LogNavBar() {
           <Button
             color="inherit"
             component={Link}
-            to="/">Logout</Button>
+            to="/" onClick={handleLogout}>Logout</Button>
         </Toolbar>
       </AppBar>
     );
