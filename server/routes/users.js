@@ -32,18 +32,41 @@ router.get('/events/:id', (req, res) => {
     }).catch(err => res.send({message: 'Error in getting event', err}))
 });
 
-router.put('/events/:id', (req, res) => {
-    db.User.findById(req.params._id).populate('events')
-    .then(event => {
-        return event.update(req.body);
-    }).then(event => {
-        res.redirect('/users')
-    }).catch(err => {
-        console.log('Error Message', err);
-        res.send({message :'An error occured while updating event', err});
-    });
+// router.put('/events/:id', (req, res) => {
+//     db.Event.findById(req.params.id).populate('users')
+//     .then(event => {
+//         return event.update(req.body);
+//     }).then(event => {
+//         res.redirect('/users/events')
+//     }).catch(err => {
+//         console.log('Error Message', err);
+//         res.send({message :'An error occured while adding event', err});
+//     });
     
-});
+// });
+
+router.post('/events/:id', (req, res) => {
+    // First get the user from the DB using the id in req.user
+    console.log(req.params.id)
+    console.log(req.user)
+    // db.User.findOne(req.user.id)
+    // .then(user => {
+    //   // Push a new event to the user's event array
+    //     user.push({ _id: req.params._id })
+    //   // Save the changes to the DB
+    //   user.save().then(() => {
+    //     res.send({ events: user.events})
+    //   })
+    //   .catch(err => {
+    //     console.log('Aww suck', err)
+    //     res.status(503).send({ message: 'Error saving document' })
+    //   })
+    // })
+    // .catch(err => {
+    //   console.log('Server error', err)
+    //   res.status(500).send({ message: 'Server error' })
+    // })
+  })
 
 // Delete an event
 router.delete('/events/:id', (req, res) => {
