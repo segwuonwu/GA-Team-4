@@ -58,6 +58,7 @@ function App(props) {
     }
   }
 
+  // Choose which nav to display base on useState
   function setNav() {
     return user ? <PostAuthNav updateUser={updateUser} user={user}/> : <PreAuthNav updateUser={updateUser} user={user}/>;
   }

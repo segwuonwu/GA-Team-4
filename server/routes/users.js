@@ -32,6 +32,19 @@ router.get('/events/:id', (req, res) => {
     }).catch(err => res.send({message: 'Error in getting event', err}))
 });
 
+router.put('/events/:id', (req, res) => {
+    db.User.findById(req.params._id).populate('events')
+    .then(event => {
+        return event.update(req.body);
+    }).then(event => {
+        res.redirect('/users')
+    }).catch(err => {
+        console.log('Error Message', err);
+        res.send({message :'An error occured while updating event', err});
+    });
+    
+});
+
 // Delete an event
 router.delete('/events/:id', (req, res) => {
     console.log('---Delete route');
