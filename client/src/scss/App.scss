@@ -5,17 +5,27 @@ $secondary_light: "#B2FEF7";
 $secondary_main: "#80CBC4";
 $secondary_dark: "#4F9A94";
 
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  .content {
+    flex: 2;
+    position: relative;
+  }
+}
+
 .logo {
   width: 8em;
   padding: 1em;
 }
 
 .hero {
+  width: 100%;
+  height: 100%;
   background-image: url("../assets/volunteers.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 92vh;
-  width: 100%;
   position: absolute;
 }
 
@@ -44,4 +54,8 @@ $secondary_dark: "#4F9A94";
 .calendar {
   height: 65vh !important;
   margin: 2em;
+}
+
+.footer {
+  background-color: #eee;
 }
