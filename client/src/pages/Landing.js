@@ -9,7 +9,7 @@ function Landing(props) {
   }
   
   return (
-    <div>
+    <div class="hero">
       <Hero />
     </div>
   );
