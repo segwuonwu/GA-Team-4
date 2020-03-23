@@ -82,7 +82,7 @@ router.delete('/events/:id', (req, res) => {
     db.Event.deleteOne(id)
     .then(() => {
         console.log('Event deleted')
-        res.redirect('/users');
+        res.redirect('/');
         //res.send(`${req.body.eventname} has been removed`)
     })
     .catch(err => res.send({message: 'Error deleting event', err}))

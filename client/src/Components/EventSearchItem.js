@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function EventComponent(props) {
+function EventSearchItem(props) {
   const classes = useStyles();
   console.log(props.event);
 
@@ -43,4 +43,4 @@ function EventComponent(props) {
     );
   }
   
-  export default EventComponent;
+  export default EventSearchItem;
