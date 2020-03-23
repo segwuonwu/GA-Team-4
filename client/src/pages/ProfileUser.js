@@ -3,9 +3,12 @@ import { Link, Redirect } from "react-router-dom";
 import { Typography, Button, Grid } from "@material-ui/core";
 
 function ProfileUser(props) {
-  if (!props.user) {
-    return <Redirect to='/' />
-  }
+
+  setTimeout(() => {
+    if (!props.user) {
+      return <Redirect to='/' />
+    }
+  }, 5000);
   
   return (
     <div>
@@ -22,7 +25,7 @@ function ProfileUser(props) {
             to="/profile/edit">Edit Profile</Button>
         </Grid>
       </Grid>
-  <Typography>{props.user ? props.user.email : "User email"}</Typography>
+      <Typography>{props.user ? props.user.email : "User email"}</Typography>
     </div>
   );
 }

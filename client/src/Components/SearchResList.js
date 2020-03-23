@@ -10,6 +10,7 @@ function SearchResList(props) {
 
   switch(props.resultType) {
     case "event":
+    case "events":
       return(
         <List>
           {props.items.map((item, index) => {
@@ -18,6 +19,7 @@ function SearchResList(props) {
         </List>
       );
     case "organization":
+    case "organizations":
       return(
         <List>
           {props.items.map((item, index) => {

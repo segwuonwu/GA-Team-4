@@ -3,8 +3,11 @@ const router = express.Router()
 const db = require('../models/index')
 
 router.get('/', (req, res) => {
-    res.send('Welcome to Organization profile');
-})
+    db.Organization.find()
+        .then(organizations => {
+        res.send(organizations)
+    });
+});
 
 // page to get a list of events
 router.get('/events', (req, res) => {
