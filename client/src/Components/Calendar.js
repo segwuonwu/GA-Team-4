@@ -2,10 +2,22 @@ import React, { useState } from 'react';
 import {  Calendar as BigCalendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/sass/styles.scss";
+import { useTheme } from "@material-ui/core/styles/"
 
 const localizer = momentLocalizer(moment);
 
 function Calendar(props) {
+
+  const theme = useTheme();
+
+  const eventStyleGetter = (event, start, end, isSelected) => {
+    let style = {
+      backgroundColor: theme.palette.secondary.main
+    }
+    return {
+      style: style
+    }
+  }
 
   const convertEvents = () => {
     if (props.events) {
@@ -27,7 +39,8 @@ function Calendar(props) {
         <BigCalendar 
             className="calendar"
             localizer={localizer}
-            events={convertEvents()}/>
+            events={convertEvents()}
+            eventPropGetter={eventStyleGetter}/>
       </div>
     );
   }
