@@ -2,14 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { Typography, Grid, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import "react-big-calendar/lib/sass/styles.scss";
-import moment from "moment";
+import Calendar from "../Components/Calendar";
 import EventList from "../Components/EventList";
 import OrgList from "../Components/OrgList";
 import ErrorMessage from "../Components/ErrorMessage";
-
-const localizer = momentLocalizer(moment);
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -118,7 +114,7 @@ function Home(props) {
 
   return (
     <div>
-      <Grid container spacing={3} className={classes.root}>
+      <Grid container className={classes.root}>
         <Grid item md={1}>
           <Avatar alt="User Profile Picture" src={props.user ? props.user.image : "https://placekitten.com/200/200"} />
         </Grid>
@@ -128,15 +124,12 @@ function Home(props) {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container spacing={3} className={classes.root}>
+      <Grid container className={classes.root}>
         <Grid item md={3}>
           { eventList() }
         </Grid>
-        <Grid item md={9}>
-          <Calendar 
-            className="calendar"
-            localizer={localizer}
-            events={[]} />
+        <Grid item md={8}>
+          <Calendar events={events} />
         </Grid>
       </Grid>
       { organizationList() }
