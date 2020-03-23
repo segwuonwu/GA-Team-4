@@ -67,23 +67,6 @@ function OrganizationUser(props) {
       });
   }, []);
 
-  // const followOrganization = () => {
-  //   //console.log(`Going to organization id ${props.organizations._id}`)
-  //   fetch(`${process.env.REACT_APP_SERVER_URL}/users/organizations/${props.organizations._id}`, {
-  //     method: 'POST',
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem('mernToken')}`
-  //     },
-  //     body: JSON.stringify({
-  //       test: 'test'
-  //     })
-  //   }).then(response => {
-  //     response.json().then(result => {
-  //       console.log('all good')
-  //     }).catch(function(err){console.log(err)})
-  //   }).catch((err)=>console.log(err))
-  // }
-
   const eventList = () => {
     if (events) {
       return (
@@ -106,7 +89,7 @@ function OrganizationUser(props) {
         <div>
           <Typography>Organization Title</Typography>
           <Typography>Organization Bio</Typography>
-          <Button >Follow</Button>
+          <Button>Follow</Button>
           {eventList()}
         </div>
       )
