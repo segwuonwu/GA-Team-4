@@ -63,6 +63,7 @@ function App(props) {
     return user ? <PostAuthNav updateUser={updateUser} user={user}/> : <PreAuthNav updateUser={updateUser} user={user}/>;
   }
 
+
   return (
     <Router>
       <div className="App">

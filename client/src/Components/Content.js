@@ -8,6 +8,7 @@ import Profile from "../pages/ProfileUser";
 import EditProfile from "../pages/EditProfileUser";
 import SearchResults from "../pages/SearchResultsUser";
 import Organization from "../pages/OrganizationUser";
+import NotFound from "../pages/NotFound";
 
 function Content(props) {
   return(
@@ -20,6 +21,7 @@ function Content(props) {
       <Route path="/profile/edit" render={() => <EditProfile user={props.user ? props.user : null} />} />
       <Route path="/search" render={() => <SearchResults user={props.user ? props.user : null} /> } />
       <Route path="/organization/:orgId" render={() => <Organization user={props.user ? props.user : null} /> } />
+      <Route path="*" component={NotFound} />
     </Switch>
   );
 }

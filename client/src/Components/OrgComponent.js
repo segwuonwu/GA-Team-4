@@ -22,8 +22,8 @@ function OrgComponent(props) {
           </Avatar>
         </ListItemAvatar>
         <ListItemText 
-          primary={props.organization.orgname}
-          secondary={props.organization.email} />
+          primary={props.organization.orgname ? props.organization.orgname : "Org name"}
+          secondary={props.organization.email ? props.organization.email : "Org email"} />
         <Button
           component={Link}
           to={`/organization/${props.organization._id}`}
