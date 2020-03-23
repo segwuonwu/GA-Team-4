@@ -15,30 +15,30 @@ function EventComponent(props) {
   console.log(props.event);
 
   const addEvent = () => {
-  console.log("Clicked")
-    fetch(`${process.env.REACT_APP_SERVER_URL}/users/events/${props.event.id}`, {
+    console.log(`Going to event id ${props.event._id}`)
+    fetch(`${process.env.REACT_APP_SERVER_URL}/users/events/${props.event._id}`, {
       method: 'POST',
-      body: {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('mernToken')}`
+      },
+      body: JSON.stringify({
         test: 'test'
-      }
-    }).then(response => response.json()).then(result => {
-      console.log('all good')
-    }).catch(err=>console.log(err))
+      })
+    }).then(response => {
+      response.json().then(result => {
+        console.log('all good')
+      }).catch(function(err){console.log(err)})
+    }).catch((err)=>console.log(err))
   }
 
     return (
-<<<<<<< HEAD
-      <ListItem>
-        <button onClick={addEvent}>Test Button</button>
-=======
       <ListItem className={classes.root}>
->>>>>>> upstream/master
         <ListItemText 
           primary={props.event.eventname ? props.event.eventname : "Name" }
           secondary={props.event.eventdate ? props.event.eventdate : "No date" }
         />
         <Typography>{props.event.organization ? props.event.organization.orgname : "org name"}</Typography>
-        <Button>RSVP</Button>
+        <Button onClick={addEvent}>RSVP</Button>
       </ListItem>
     );
   }
