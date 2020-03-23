@@ -5,7 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/sass/styles.scss";
 import moment from "moment";
-import SideList from "../Components/SideList";
+import EventList from "../Components/EventList";
+import OrgList from "../Components/OrgList";
 import ErrorMessage from "../Components/ErrorMessage";
 
 const localizer = momentLocalizer(moment);
@@ -97,7 +98,7 @@ function Home(props) {
 
   const eventList = () => {
     if (events) {
-      return <SideList listType="event" events={events} />
+      return <EventList listType="event" events={events} />
     } else {
       return <ErrorMessage error={error.events} />
     }
@@ -105,7 +106,7 @@ function Home(props) {
 
   const organizationList = () => {
     if (organizations) {
-      return <SideList listType="organization" organizations={organizations} />
+      return <OrgList listType="organization" organizations={organizations} />
     } else {
       return <ErrorMessage error={error.organizations} />
     }
