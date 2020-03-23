@@ -1,7 +1,7 @@
 import React from 'react';
 import { List } from "@material-ui/core/";
-import EventItem from "../Components/EventComponent";
-import OrganizationItem from "../Components/OrgComponent";
+import EventSearchItem from "./EventSearchItem";
+import OrgSearchItem from "./OrgSearchItem";
 
 //lists results of search 
 //ability to click on an event  to be added to user
@@ -10,18 +10,20 @@ function SearchResList(props) {
 
   switch(props.resultType) {
     case "event":
+    case "events":
       return(
         <List>
           {props.items.map((item, index) => {
-            return <EventItem event={item} key={index} />
+            return <EventSearchItem event={item} key={index} />
           })}
         </List>
       );
     case "organization":
+    case "organizations":
       return(
         <List>
           {props.items.map((item, index) => {
-            return <OrganizationItem organization={item} key={index} />
+            return <OrgSearchItem organization={item} key={index} />
           })}
         </List>
       )

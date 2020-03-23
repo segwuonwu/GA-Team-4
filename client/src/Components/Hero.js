@@ -1,15 +1,29 @@
 import React from 'react';
-
-//replace H1 with logo
-
+import { Link } from "react-router-dom";
+import { Button, Typography } from "@material-ui/core";
 
 function Hero() {
     return (
-      <div>
-        <h1>GiveBack</h1>
-        <img src="https://placekitten.com/600/600" />
-        <h3>Connecting volunteers with their communities</h3>
-      </div>
+        <div className="info">
+          <Typography
+            variant="h1">
+              Welcome to GiveBack
+          </Typography>
+          <Typography
+            variant="h4">
+              Connecting volunteers with their communities
+          </Typography>
+          <Button
+            className="btn"
+            variant="contained"
+            color="secondary"
+            size="large"
+            component={Link}
+            to="/signup"
+            >
+              Join Now!
+          </Button>
+        </div>
     );
   }
   

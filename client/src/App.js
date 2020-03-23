@@ -62,12 +62,13 @@ function App(props) {
     return user ? <PostAuthNav updateUser={updateUser} user={user}/> : <PreAuthNav updateUser={updateUser} user={user}/>;
   }
 
+
   return (
     <Router>
       <div className="App">
         <ThemeProvider theme={theme}>
-          {setNav()}
-          <Content updateUser={updateUser} user={user}/>
+          <div className="navigation">{setNav()}</div>
+          <div className="content"><Content updateUser={updateUser} user={user}/></div>
           <Footer/>
         </ThemeProvider>
       </div>
