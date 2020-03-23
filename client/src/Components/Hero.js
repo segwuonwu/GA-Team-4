@@ -4,7 +4,6 @@ import { Button, Typography } from "@material-ui/core";
 
 function Hero() {
     return (
-      <div className="hero">
         <div className="info">
           <Typography
             variant="h1">
@@ -25,7 +24,6 @@ function Hero() {
               Join Now!
           </Button>
         </div>
-      </div>
     );
   }
   
