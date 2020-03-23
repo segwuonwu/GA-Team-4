@@ -13,6 +13,18 @@ $secondary_dark: "#4F9A94";
     flex: 2;
     position: relative;
   }
+  .footer {
+    background-color: #eee;
+
+    div {
+      padding: 0.25em;
+      text-align: center;
+    }
+
+    .footer-link {
+      font-weight: bold;
+    }
+  }
 }
 
 .logo {
@@ -54,8 +66,4 @@ $secondary_dark: "#4F9A94";
 .calendar {
   height: 65vh !important;
   margin: 2em;
-}
-
-.footer {
-  background-color: #eee;
 }
