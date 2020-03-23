@@ -141,3 +141,7 @@ Organization Create Event Page
  | Password | String, required |
  | Image |  String, default |
  | Followers | Array, String, User_ids |
+
+
+## Resources
+[Stock Image of Volunteers](https://charity.lovetoknow.com/Examples_of_Volunteerism)
