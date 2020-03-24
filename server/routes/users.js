@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router()
 const db = require('../models/index')
-
-
 router.get('/', (req, res) => {
     res.send('Welcome to user profile');
 });
@@ -14,7 +12,6 @@ router.get('/events', (req, res) => {
             res.send(updatedUser.events);
         }).catch(err => res.send({message: 'Error in getting all events', err}))
 });
-
 router.get("/organizations", (req, res) => {
     db.User.findById(req.user._id).populate("organizations")
     .then(updatedUser => {
@@ -84,11 +81,10 @@ router.delete('/events/:id', (req, res) => {
     db.Event.deleteOne(id)
     .then(() => {
         console.log('Event deleted')
+        res.redirect('/users');
         res.redirect('/');
         //res.send(`${req.body.eventname} has been removed`)
     })
     .catch(err => res.send({message: 'Error deleting event', err}))
 });
-
 module.exports = router;
-

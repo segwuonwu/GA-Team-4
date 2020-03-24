@@ -12,6 +12,54 @@ db.Organization.create({
     console.log(`Following error has occured: ${err}`);
 });
 
+db.Organization.create({
+    orgname: "Heritage Park",
+    email: "heritagepark@cleanup.com",
+    password: "heritagepark",
+    phonenumber: "234-9835",
+}).then(result => {
+    console.log(`${result.orgname} has been created!`);
+    populateEvents(result._id);
+}).catch(err => {
+    console.log(`Following error has occured: ${err}`);
+});
+
+db.Organization.create({
+    orgname: "Des Moines Food Bank",
+    email: "desmoines@foodbank.com",
+    password: "foodbank",
+    phonenumber: "840-1948",
+}).then(result => {
+    console.log(`${result.orgname} has been created!`);
+    populateEvents(result._id);
+}).catch(err => {
+    console.log(`Following error has occured: ${err}`);
+});
+
+db.Organization.create({
+    orgname: "American Red Cross - Seattle",
+    email: "americanredcross@helpforyou.com",
+    password: "foodbank",
+    phonenumber: "932-2401",
+}).then(result => {
+    console.log(`${result.orgname} has been created!`);
+    populateEvents(result._id);
+}).catch(err => {
+    console.log(`Following error has occured: ${err}`);
+});
+
+db.Organization.create({
+    orgname: "Watercress Park Restoration Commitee",
+    email: "watercresspark@restoration.com",
+    password: "restoration",
+    phonenumber: "358-1083",
+}).then(result => {
+    console.log(`${result.orgname} has been created!`);
+    populateEvents(result._id);
+}).catch(err => {
+    console.log(`Following error has occured: ${err}`);
+});
+
 const populateEvents = (orgId) => {
 
     db.Event.create({
