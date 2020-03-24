@@ -10,6 +10,12 @@ import ErrorMessage from "../Components/ErrorMessage";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
+  }, 
+  header: {
+    color: theme.palette.primary.dark,
+    fontWeight: "bold",
+    marginTop: "1em",
+    marginLeft: "1em"
   }
 }));
 
@@ -114,16 +120,11 @@ function Home(props) {
 
   return (
     <div>
-      <Grid container className={classes.root}>
-        <Grid item md={1}>
-          <Avatar alt="User Profile Picture" src={props.user ? props.user.image : "https://placekitten.com/200/200"} />
-        </Grid>
-        <Grid item md={3}>
-          <Typography>
-            Hello {props.user ? props.user.firstname : "User"}!
-          </Typography>
-        </Grid>
-      </Grid>
+      <Typography
+        variant="h4"
+        className={classes.header}>
+        {props.user ? props.user.firstname : "User"}'s Dashboard
+      </Typography>
       <Grid container className={classes.root}>
         <Grid item md={3}>
           { eventList() }

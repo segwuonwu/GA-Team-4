@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: "1.5em",
     marginLeft: "1em",
     fontWeight: "bold",
-    color: theme.palette.primary.dark
+    color: theme.palette.secondary.dark
   }
 }));
 
