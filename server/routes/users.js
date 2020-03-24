@@ -14,8 +14,6 @@ router.get('/events', (req, res) => {
             res.send(updatedUser.events);
         }).catch(err => res.send({message: 'Error in getting all events', err}))
 });
-
-//Show all organizations
 router.get("/organizations", (req, res) => {
     db.User.findById(req.user._id).populate("organizations")
     .then(updatedUser => {
@@ -78,8 +76,6 @@ db.User.findByIdAndUpdate(req.user._id,
 })
 })
 
-
-
 // Delete an event
 router.delete('/events/:id', (req, res) => {
     console.log('---Delete route');
@@ -92,6 +88,4 @@ router.delete('/events/:id', (req, res) => {
     })
     .catch(err => res.send({message: 'Error deleting event', err}))
 });
-
 module.exports = router;
-
