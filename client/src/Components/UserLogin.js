@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import Logo from "./Logo";
 import handsImg from "../assets/hands.jpg";
 
 
@@ -98,11 +97,10 @@ function Login(props) {
   }
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <div className="loginform">
-      <Grid item xs={false} sm={6} md={6} className={classes.image} />
-      <Grid item xs={12} sm={9} md={6} elevation={6} square></Grid>
+      <Grid item xs={false} sm={3} md={6} className={classes.image} />
+      <Grid item xs={12} sm={9} md={6} elevation={6}>
       <div className={`${classes.paper}`}>
         <Typography component="h1" variant="h3" gutterBottom>
           Returning User
@@ -116,7 +114,6 @@ function Login(props) {
             <Grid item xs={12}>
             <TextField
                 variant="outlined"
-                color="inherent"
                 required
                 fullWidth
                 id="email"
@@ -149,16 +146,15 @@ function Login(props) {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="/signup" variant="body2">
+              <Link to="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
           </Grid>
         </form>
-        <Logo />
       </div>
-      </div>
-    </Container>
+      </Grid>
+    </Grid>
   );
 }
 
