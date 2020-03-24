@@ -3,19 +3,28 @@ import { Redirect } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Avatar from '@material-ui/core/Avatar';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import handsImg from "../assets/hands.jpg";
+
 
 
 function Login(props) {
   const useStyles = makeStyles(theme => ({
+    root: {
+      height: '90vh', 
+    },
+    image: {
+      backgroundImage: `url(${handsImg})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    },
     paper: {
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(8,4),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -25,12 +34,20 @@ function Login(props) {
       backgroundColor: theme.palette.secondary.main,
     },
     form: {
-      width: '100%', 
+      width: '80%', 
       marginTop: theme.spacing(3),
+      padding: theme.spacing(1)
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
     },
+    topFields: {
+      maxWidth: "48.9%",
+      flexBasis: "48.9%"
+    },
+    spacing: {
+      margin: "0.25em"
+    }
   }));
   
   const classes = useStyles()
@@ -58,7 +75,7 @@ function Login(props) {
         'Content-Type': 'application/json'
       }
     })
-    // setMessage to error if not authenticated
+    
       .then(response => {
         if (!response.ok) {
           setMessage(response.statusText)
@@ -80,18 +97,20 @@ function Login(props) {
   }
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
+      <Grid item xs={false} sm={3} md={6} className={classes.image} />
+      <Grid item xs={12} sm={9} md={6} elevation={6}>
+      <div className={`${classes.paper}`}>
+        <Typography component="h1" variant="h3" gutterBottom>
+          Returning User
+        </Typography>
+        <Typography variant="h6">
+          Welcome Back
         </Typography>
         <span className="red">{message}</span>
         <form className={classes.form} onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
+        <Grid container className={classes.topRow}>
             <Grid item xs={12}>
             <TextField
                 variant="outlined"
@@ -125,17 +144,21 @@ function Login(props) {
           >
             Log in
           </Button>
-          <Grid container>
+          <Grid container justify="flex-end">
             <Grid item>
-              <Link href="/signup" variant="body2">
+              <Link to="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-      
-    </Container>
+<<<<<<< HEAD
+    </Grid>
+=======
+      </Grid>
+>>>>>>> 709e0cbb4367f868b299e53a96f3cd39fd311d07
+    </Grid>
   );
 }
 
