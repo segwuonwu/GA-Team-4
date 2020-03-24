@@ -77,6 +77,24 @@ router.post('/organizations/:id', (req, res) => {
     });
 });
 
+router.put('/edit', (req, res) => {
+    db.User.findOneAndUpdate(req.body._id,
+        {
+            $set: {
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                email: req.body.email,
+                password: req.body.password,
+                image: req.body.image
+            }
+        }, {
+        sort: { _id: -1 }, upsert: true
+    }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+    })
+})
+
 // Delete an event
 router.delete('/events/:id', (req, res) => {
     console.log('---Delete route');

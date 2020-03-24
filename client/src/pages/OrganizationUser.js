@@ -86,6 +86,7 @@ function OrganizationUser(props) {
           <Typography>{organization.email ? organization.email : "Organization Email"}</Typography>
           <Typography>Volunteers Following: { organization.users ? organization.users.length : 0 }</Typography>
           <Button onClick={() => followOrganization()}>Follow</Button>
+          <Typography>Up coming events</Typography>
           {eventList()}
         </div>
       )

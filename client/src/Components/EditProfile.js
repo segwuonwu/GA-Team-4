@@ -90,18 +90,6 @@ function EditProfile(props) {
               <TextField
                 variant="outlined"
                 fullWidth
-                name="phonenumber"
-                label="Phone Number"
-                type="phonenumber"
-                id="phonenumber"
-                value={props.user ? props.user.phonenumber : ""}
-                onChange={props._change}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                fullWidth
                 name="image"
                 label="Profile Url"
                 type="url"

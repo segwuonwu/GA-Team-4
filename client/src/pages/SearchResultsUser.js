@@ -88,7 +88,7 @@ function SearchResultsUser(props) {
       <Typography 
         variant="h3"
         className={classes.header}>Search Result for 
-        <span className={classes.query}> {query}</span>
+        <span className={classes.query}> {query.charAt(0).toUpperCase()+ query.slice(1)}</span>
       </Typography>
       { error ? 
         <div>{error}</div> : 
