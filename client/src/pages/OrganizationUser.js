@@ -48,7 +48,7 @@ function OrganizationUser(props) {
 
   useEffect(() => {
     // Organization
-    fetch(`${process.env.REACT_APP_SERVER_URL}/organizations/${orgId}`,{
+    fetch(`/organizations/${orgId}`,{
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('mernToken')}`
@@ -93,7 +93,7 @@ function OrganizationUser(props) {
   }
 
   const followOrganization = () => {
-    fetch(`${process.env.REACT_APP_SERVER_URL}/users/organizations/${organization._id}`, {
+    fetch(`/users/organizations/${organization._id}`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('mernToken')}`
@@ -113,8 +113,6 @@ function OrganizationUser(props) {
       return (
         <div className={classes.showOrganization}>
           <Grid container className={classes.centered} spacing={3}>
-            
-            
           <Grid item><Typography variant="h5">{organization.orgname ? organization.orgname : "Organization"} </Typography> </Grid>
           <Grid item><Typography variant="h5" className={classes.font}>{organization.email ? organization.email : "No Email"}</Typography> </Grid>
           <Grid item><Typography variant="h5" className={classes.font}>Volunteers Following: { organization.users ? organization.users.length : 0 }</Typography></Grid>

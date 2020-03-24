@@ -6,7 +6,6 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import handsImg from "../assets/hands.jpg";
 
@@ -65,7 +64,7 @@ function Login(props) {
   const handleSubmit = e => {
     e.preventDefault()
     // make a fetch request to get route of the server to check for authentication
-    fetch(`${process.env.REACT_APP_SERVER_URL}/auth/login`, {
+    fetch(`/auth/login`, {
       method: 'POST',
       body: JSON.stringify({
         email,
@@ -121,7 +120,7 @@ function Login(props) {
                 name="email"
                 onChange={e => setEmail(e.target.value)}
               />
-            </Grid>
+              </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -153,7 +152,7 @@ function Login(props) {
           </Grid>
         </form>
       </div>
-      </Grid>
+    </Grid>
     </Grid>
   );
 }

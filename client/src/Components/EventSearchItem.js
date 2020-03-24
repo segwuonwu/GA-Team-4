@@ -15,7 +15,7 @@ function EventSearchItem(props) {
 
   const addEvent = () => {
     console.log(`Going to event id ${props.event._id}`)
-    fetch(`${process.env.REACT_APP_SERVER_URL}/users/events/${props.event._id}`, {
+    fetch(`/users/events/${props.event._id}`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('mernToken')}`
