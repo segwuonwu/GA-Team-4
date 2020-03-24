@@ -55,22 +55,24 @@ router.post('/events/:id', (req, res) => {
 
 router.post('/organizations/:id', (req, res) => {
     db.User.findByIdAndUpdate(req.user._id,
-        { $push: { organizations: req.params.id } },
+        { $addToSet: { organizations: req.params.id } },
         { new: true, useFindAndModify: false })
     .then(updateInfo => {
-        console.log('organization added');
-        console.log(updateInfo);
-        // organization has been added to user.events
-        db.Organization.updateOne().then(updateInfo2 => {
-            console.log(updateInfo2);
-            res.send({message: `${req.body.orgname}`})
-        })
+        // organization has been added to user.organizations
+        db.Organization.findByIdAndUpdate(req.params.id, 
+            { $addToSet: { users: req.user._id }},
+            { new: true, userFindAndModify: false })
+            .then(updatedOrg => {
+                res.send({ message: "User now following organization" });
+            }).catch(err => {
+                res.send({ message: "Unable to follow organization" });
+            });
     })
     .catch(err => {
       console.log('Server error', err)
       res.status(500).send({ message: 'Server error' })
-    })
-})
+    });
+});
 
 // Delete an event
 router.delete('/events/:id', (req, res) => {
