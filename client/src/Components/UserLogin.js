@@ -9,13 +9,23 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import Logo from "./Logo";
+import handsImg from "../assets/hands.jpg";
 
 
 
 function Login(props) {
   const useStyles = makeStyles(theme => ({
+    root: {
+      height: '90vh', 
+    },
+    image: {
+      backgroundImage: `url(${handsImg})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    },
     paper: {
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(8,4),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -25,12 +35,20 @@ function Login(props) {
       backgroundColor: theme.palette.secondary.main,
     },
     form: {
-      width: '100%', 
+      width: '80%', 
       marginTop: theme.spacing(3),
+      padding: theme.spacing(1)
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
     },
+    topFields: {
+      maxWidth: "48.9%",
+      flexBasis: "48.9%"
+    },
+    spacing: {
+      margin: "0.25em"
+    }
   }));
   
   const classes = useStyles()
@@ -58,7 +76,7 @@ function Login(props) {
         'Content-Type': 'application/json'
       }
     })
-    // setMessage to error if not authenticated
+    
       .then(response => {
         if (!response.ok) {
           setMessage(response.statusText)
@@ -82,8 +100,10 @@ function Login(props) {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-
+      <div className="loginform">
+      <Grid item xs={false} sm={6} md={6} className={classes.image} />
+      <Grid item xs={12} sm={9} md={6} elevation={6} square></Grid>
+      <div className={`${classes.paper}`}>
         <Typography component="h1" variant="h3" gutterBottom>
           Returning User
         </Typography>
@@ -92,7 +112,7 @@ function Login(props) {
         </Typography>
         <span className="red">{message}</span>
         <form className={classes.form} onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
+        <Grid container className={classes.topRow}>
             <Grid item xs={12}>
             <TextField
                 variant="outlined"
@@ -137,7 +157,7 @@ function Login(props) {
         </form>
         <Logo />
       </div>
- 
+      </div>
     </Container>
   );
 }

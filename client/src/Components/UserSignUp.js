@@ -7,13 +7,14 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Redirect } from 'react-router-dom';
+import volunteerImg from "../assets/gardening.jpg";
 
   const useStyles = makeStyles((theme) => ({
     root: {
       height: '90vh',
     },
     image: {
-      backgroundImage: "url(/static/media/gardening.64d13e40.jpg)",
+      backgroundImage: `url(${volunteerImg})`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       backgroundPosition: 'center'
@@ -24,14 +25,9 @@ import { Redirect } from 'react-router-dom';
       flexDirection: 'column',
       alignItems: 'center',
     },
-    avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
-    },
     form: {
       width: '100%', 
-      marginTop: theme.spacing(3),
-      padding: theme.spacing(1)
+      marginTop: theme.spacing(1)
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
@@ -40,7 +36,7 @@ import { Redirect } from 'react-router-dom';
       justifyContent: "space-between"
     },
     topFields: {
-      maxWidth: "48.9%",
+      maxWidth: "47.9%",
       flexBasis: "48.9%"
     },
     spacing: {
