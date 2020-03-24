@@ -32,6 +32,49 @@ router.get('/events/:id', (req, res) => {
     }).catch(err => res.send({message: 'Error in getting event', err}))
 });
 
+
+router.post('/events/:id', (req, res) => {
+    // First get the user from the DB using the id in req.user
+    //Event Id is in req.params.id
+    // user id is in req.user.id
+
+    db.User.findByIdAndUpdate(req.user._id,
+        { $push: { events: req.params.id } },
+        { new: true, useFindAndModify: false })
+    .then(updateInfo => {
+        console.log('Event has added')
+        console.log(updateInfo)
+        // Event has been added to user.events
+        db.Event.updateOne().then(updateInfo2 => {
+            console.log(updateInfo2)
+            res.send({message: `${req.body.eventname}`})
+        })
+    })
+    .catch(err => {
+      console.log('Server error', err)
+      res.status(500).send({ message: 'Server error' })
+    })
+})
+
+router.post('/organizations/:id', (req, res) => {
+    db.User.findByIdAndUpdate(req.user._id,
+        { $push: { organizations: req.params.id } },
+        { new: true, useFindAndModify: false })
+    .then(updateInfo => {
+        console.log('organization added');
+        console.log(updateInfo);
+        // organization has been added to user.events
+        db.Organization.updateOne().then(updateInfo2 => {
+            console.log(updateInfo2);
+            res.send({message: `${req.body.orgname}`})
+        })
+    })
+    .catch(err => {
+      console.log('Server error', err)
+      res.status(500).send({ message: 'Server error' })
+    })
+})
+
 // Delete an event
 router.delete('/events/:id', (req, res) => {
     console.log('---Delete route');
@@ -39,7 +82,7 @@ router.delete('/events/:id', (req, res) => {
     db.Event.deleteOne(id)
     .then(() => {
         console.log('Event deleted')
-        res.redirect('/users');
+        res.redirect('/');
         //res.send(`${req.body.eventname} has been removed`)
     })
     .catch(err => res.send({message: 'Error deleting event', err}))
