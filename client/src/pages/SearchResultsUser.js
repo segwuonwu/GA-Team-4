@@ -1,10 +1,26 @@
 import React, {useEffect, useState} from "react";
 import { Redirect } from "react-router-dom";
 import { Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import SearchResList from "../Components/SearchResList";
 import { useLocation } from "react-router-dom";
 
+const useStyles = makeStyles(theme => ({
+  header: {
+    color: theme.palette.primary.dark,
+    fontWeight: "bold",
+    width: "40%,",
+    margin: "1em 0 0 28%",
+  },
+  query: {
+    color: theme.palette.secondary.dark,
+    fontWeight: "bold"
+  }
+}))
+
 function SearchResultsUser(props) {
+
+  const classes = useStyles();
 
   const [results, setResults] = useState(null);  
   const [error, setError] = useState(null);
@@ -12,9 +28,7 @@ function SearchResultsUser(props) {
       return new URLSearchParams(useLocation().search);
   }
   const query = useQuery().get("query");
-//"https://codesandbox.io/s/react-router-query-parameters-mfh8p?from-embed"
   useEffect(()=>{
-    console.log(query);
     switch(query) {
       case "events":
       case "event":
@@ -69,11 +83,13 @@ function SearchResultsUser(props) {
     }
   }, 5000);
 
-  console.log(results);
-
   return (
     <div>
-      <Typography>Search Result for {query}</Typography>
+      <Typography 
+        variant="h3"
+        className={classes.header}>Search Result for 
+        <span className={classes.query}> {query}</span>
+      </Typography>
       { error ? 
         <div>{error}</div> : 
         <SearchResList items={ results ? results : [] } resultType={query} /> 
