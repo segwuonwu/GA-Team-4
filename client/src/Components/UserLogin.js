@@ -153,7 +153,11 @@ function Login(props) {
           </Grid>
         </form>
       </div>
+<<<<<<< HEAD
     </Grid>
+=======
+      </Grid>
+>>>>>>> 709e0cbb4367f868b299e53a96f3cd39fd311d07
     </Grid>
   );
 }
