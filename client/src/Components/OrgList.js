@@ -34,5 +34,4 @@ function OrgList(props) {
     </div>
   );
 }
-
 export default OrgList;
