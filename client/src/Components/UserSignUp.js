@@ -6,19 +6,17 @@ import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import { Redirect } from 'react-router-dom';
-
 
   const useStyles = makeStyles((theme) => ({
     root: {
-      height: '100vh',
+      height: '90vh',
     },
     image: {
-      backgroundImage: ('../assets/gardening.jpg'),
+      backgroundImage: "url(/static/media/gardening.64d13e40.jpg)",
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
-      backgroundPosition: 'center',
+      backgroundPosition: 'center'
     },
     paper: {
       marginTop: theme.spacing(8,4),
@@ -33,10 +31,21 @@ import { Redirect } from 'react-router-dom';
     form: {
       width: '100%', 
       marginTop: theme.spacing(3),
+      padding: theme.spacing(1)
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
     },
+    topRow: {
+      justifyContent: "space-between"
+    },
+    topFields: {
+      maxWidth: "48.9%",
+      flexBasis: "48.9%"
+    },
+    spacing: {
+      margin: "0.25em"
+    }
   }));
 
 const SignUp = props => {
@@ -89,16 +98,18 @@ const SignUp = props => {
     }
 
   return (
-    <Container component="main" maxWidth="xs" class="signupform">
+    <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <div classes={{paper: classes.paper, image: classes.image}}>     
+      <Grid item xs={false} sm={3} md={6} className={classes.image} />
+      <Grid item xs={12} sm={9} md={6} elevation={6} square>
+      <div className={`${classes.paper}`}>     
         <Typography component="h1" variant="h4" gutterBottom>
          <br></br> New User Registration
         </Typography>
         <span className="red">{message}</span>
         <form className={classes.form} onSubmit={handleSubmit}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+          <Grid container className={classes.topRow}>
+            <Grid item xs={12} sm={5} className={`${classes.spacing} ${classes.topFields}`}>
               <TextField
                 name="firstname"
                 variant="outlined"
@@ -110,7 +121,7 @@ const SignUp = props => {
                 onChange={e => setFirstname(e.target.value)}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={5} className={`${classes.spacing} ${classes.topFields}`}>
               <TextField
                 variant="outlined"
                 required
@@ -121,7 +132,7 @@ const SignUp = props => {
                 onChange={e => setLastname(e.target.value)}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12}  className={classes.spacing}>
               <TextField
                 variant="outlined"
                 required
@@ -132,7 +143,7 @@ const SignUp = props => {
                 onChange={e => setEmail(e.target.value)}
                 />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12}  className={classes.spacing}>
               <TextField
                 variant="outlined"
                 required
@@ -162,9 +173,9 @@ const SignUp = props => {
             </Grid>
           </Grid>
         </form>
-      </div>
-      
-    </Container>
+        </div>
+      </Grid>
+    </Grid>
    
   );
 };
