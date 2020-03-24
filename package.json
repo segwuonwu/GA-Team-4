@@ -4,7 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "engines": {
+    "node": "10.15.0"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +23,7 @@
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.5",
     "morgan": "^1.9.1",
+    "path": "^0.12.7",
     "rowdy-logger": "^1.0.2",
     "yarn": "^1.22.4"
   }
