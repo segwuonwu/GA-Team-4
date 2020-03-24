@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
-import { Typography, Button, Grid } from "@material-ui/core";
+import { Typography, Button, Grid, Paper } from "@material-ui/core";
 
 function ProfileUser(props) {
 
@@ -12,7 +12,7 @@ function ProfileUser(props) {
   
   return (
     <div>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} component={Paper}>
         <Grid item md={2}>
           <img src={props.user ? props.user.image : "https://placekitten.com/200/200"} alt="User Profile Picture" />
         </Grid>
