@@ -12,10 +12,7 @@ const useStyles = makeStyles(theme =>({
     color: theme.palette.primary.dark,
     fontWeight: "bold",
     marginTop: "1em",
-    marginLeft: "1em",
-  },
-  body: {
-    alignItems: 'center',
+    marginLeft: "1em"
   }
 }));
 
@@ -25,7 +22,7 @@ function OrgList(props) {
   return(
     <div>
       <Typography
-        variant="h3"
+        variant="h4"
         className={classes.header}>
         Affiliated Organizations
       </Typography>
@@ -37,5 +34,4 @@ function OrgList(props) {
     </div>
   );
 }
-
 export default OrgList;
