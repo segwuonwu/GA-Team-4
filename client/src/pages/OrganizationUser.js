@@ -1,8 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { Typography, Button, List } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import EventSearchItem from "../Components/EventSearchItem";
 import ErrorMessage from "../Components/ErrorMessage";
+
+const useStyles = makeStyles(theme => ({
+  header: {
+    color: theme.palette.primary.dark,
+    fontWeight: "bold",
+    width: "45%,",
+    margin: "1em 0 0 28%",
+  },
+  query: {
+    color: theme.palette.secondary.dark,
+    fontWeight: "bold"
+  }
+}))
 
 function OrganizationUser(props) {
 
