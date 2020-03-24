@@ -12,8 +12,8 @@ const useStyles = makeStyles(theme =>({
     color: theme.palette.primary.dark,
     fontWeight: "bold",
     marginTop: "1em",
-    marginLeft: "1em",
-  },
+    marginLeft: "1em"
+  }
 }));
 
 function OrgList(props) {
