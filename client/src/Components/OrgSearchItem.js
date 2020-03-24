@@ -15,23 +15,7 @@ const useStyles = makeStyles(theme => ({
 // Expected props is an object
 function OrgComponent(props) {
   const classes = useStyles();
-
-  const followOrganization = () => {
-    console.log(`Showing organization with id ${props.organization._id}`)
-    fetch(`${process.env.REACT_APP_SERVER_URL}/users/organizations/${props.organization._id}`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('mernToken')}`
-      },
-      body: JSON.stringify({
-        test: 'test'
-      })
-    }).then(response => {
-      response.json().then(result => {
-        console.log('all good')
-      }).catch(function(err){console.log(err)})
-    }).catch((err)=>console.log(err))
-  }
+  
     return (
       <ListItem className={classes.root}>
         <ListItemAvatar>
@@ -44,8 +28,9 @@ function OrgComponent(props) {
           secondary={props.organization.email ? props.organization.email : "Org email"} />
         <Button
           component={Link}
-          to={`/organization/${props.organization._id}`}
-          onClick={followOrganization}>Show More</Button>
+          to={`/organization/${props.organization._id}`}>
+            Show More
+        </Button>
       </ListItem>
     );
   }
