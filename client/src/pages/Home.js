@@ -37,7 +37,7 @@ function Home(props) {
 
   useEffect(() => {
     // Call events for a user
-    fetch(`${process.env.REACT_APP_SERVER_URL}/users/events`, {
+    fetch(`/users/events`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.mernToken}`
@@ -72,7 +72,7 @@ function Home(props) {
 
   useEffect(() => {
     // Call organizations for a user
-    fetch(`${process.env.REACT_APP_SERVER_URL}/users/organizations`, {
+    fetch(`/users/organizations`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.mernToken}`

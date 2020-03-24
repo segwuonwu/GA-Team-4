@@ -64,7 +64,7 @@ function Login(props) {
   const handleSubmit = e => {
     e.preventDefault()
     // make a fetch request to get route of the server to check for authentication
-    fetch(`${process.env.REACT_APP_SERVER_URL}/auth/login`, {
+    fetch(`/auth/login`, {
       method: 'POST',
       body: JSON.stringify({
         email,

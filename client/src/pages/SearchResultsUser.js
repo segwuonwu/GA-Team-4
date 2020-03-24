@@ -32,7 +32,7 @@ function SearchResultsUser(props) {
     switch(query) {
       case "events":
       case "event":
-        fetch(`${process.env.REACT_APP_SERVER_URL}/events`, {
+        fetch(`/events`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.mernToken}`
@@ -54,7 +54,7 @@ function SearchResultsUser(props) {
         break;
       case "organizations":
       case "organization":
-        fetch(`${process.env.REACT_APP_SERVER_URL}/organizations`, {
+        fetch(`/organizations`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.mernToken}`

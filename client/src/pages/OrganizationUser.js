@@ -48,7 +48,7 @@ function OrganizationUser(props) {
 
   useEffect(() => {
     // Organization
-    fetch(`${process.env.REACT_APP_SERVER_URL}/organizations/${orgId}`,{
+    fetch(`/organizations/${orgId}`,{
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('mernToken')}`
@@ -93,7 +93,7 @@ function OrganizationUser(props) {
   }
 
   const followOrganization = () => {
-    fetch(`${process.env.REACT_APP_SERVER_URL}/users/organizations/${organization._id}`, {
+    fetch(`/users/organizations/${organization._id}`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('mernToken')}`
