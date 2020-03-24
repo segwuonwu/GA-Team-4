@@ -18,7 +18,12 @@ function OrganizationUser(props) {
 
   useEffect(() => {
     // Organization
-    fetch("")
+    fetch(`${process.env.REACT_APP_SERVER_URL}/organizations/${orgId}`,{
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('mernToken')}`
+      }
+    })
       .then(response => {
         if (!response.ok) {
           setError({
@@ -31,33 +36,7 @@ function OrganizationUser(props) {
         }
       }).then(organization => {
         setOrganization(organization);
-        // Events - Nested inside our organization call because if we can't get the organziation, we can't get the events tied to it.
-        fetch("")
-          .then(response => {
-            if (!response.ok) {
-              setError({
-                ...error,
-                events: "Couldn't reach database"
-              });
-              return;
-            }
-            return response.json();
-          }).then(events => {
-            if (events.length < 1) {
-              setError({
-                ...error,
-                events: "No events to show right now"
-              });
-            } else {
-              setEvents(events);
-            }
-          }).catch(err => {
-            setError({
-              ...error,
-              events: "Couldn't retrieve events"
-            });
-            console.log(err);
-          })
+        setEvents(organization.events);
       }).catch(err => {
         setError({
           ...error,
@@ -83,13 +62,30 @@ function OrganizationUser(props) {
     }
   }
 
+  const followOrganization = () => {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/users/organizations/${organization._id}`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('mernToken')}`
+      },
+      body: JSON.stringify({
+        _id: organization._id
+      })
+    }).then(response => {
+      response.json().then(result => {
+        console.log(result);
+      }).catch(function(err){console.log(err)})
+    }).catch((err)=>console.log(err))
+  }
+
   const showOrganization = () => {
     if (organization) {
       return (
         <div>
-          <Typography>Organization Title</Typography>
-          <Typography>Organization Bio</Typography>
-          <Button>Follow</Button>
+          <Typography>{organization.orgname ? organization.orgname : "Organization Title"}</Typography>
+          <Typography>{organization.email ? organization.email : "Organization Email"}</Typography>
+          <Typography>Volunteers Following: { organization.users ? organization.users.length : 0 }</Typography>
+          <Button onClick={() => followOrganization()}>Follow</Button>
           {eventList()}
         </div>
       )

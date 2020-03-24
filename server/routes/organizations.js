@@ -9,6 +9,22 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get("/:id", (req, res) => {
+    db.Organization.findById(req.params.id)
+        .then(organization => {
+            db.Event.find({ organization: organization._id })
+                .then(events => {
+                    organization['events'] = events;
+                    res.send(organization);
+                }).catch(err => {
+                    console.log(err);
+                    res.send(organization);
+                })
+        }).catch(err => {
+            res.send({ message: "Error retrieving organization" });
+        });
+});
+
 // page to get a list of events
 router.get('/events', (req, res) => {
     db.Event.find()
