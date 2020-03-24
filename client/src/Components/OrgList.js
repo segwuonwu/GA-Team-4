@@ -22,7 +22,7 @@ function OrgList(props) {
   return(
     <div>
       <Typography
-        variant="h3"
+        variant="h4"
         className={classes.header}>
         Affiliated Organizations
       </Typography>
@@ -34,5 +34,4 @@ function OrgList(props) {
     </div>
   );
 }
-
 export default OrgList;
