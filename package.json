@@ -5,11 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "web": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "engines": {
-    "node": "10.15.0"
+    "node": "13.6.0"
   },
   "author": "",
   "license": "ISC",
