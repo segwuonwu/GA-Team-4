@@ -3,13 +3,13 @@ import { Redirect } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Avatar from '@material-ui/core/Avatar';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import Logo from "./Logo";
+
 
 
 function Login(props) {
@@ -83,11 +83,12 @@ function Login(props) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
+
+        <Typography component="h1" variant="h3" gutterBottom>
+          Returning User
+        </Typography>
+        <Typography variant="h6">
+          Welcome Back
         </Typography>
         <span className="red">{message}</span>
         <form className={classes.form} onSubmit={handleSubmit}>
@@ -95,6 +96,7 @@ function Login(props) {
             <Grid item xs={12}>
             <TextField
                 variant="outlined"
+                color="inherent"
                 required
                 fullWidth
                 id="email"
@@ -125,7 +127,7 @@ function Login(props) {
           >
             Log in
           </Button>
-          <Grid container>
+          <Grid container justify="flex-end">
             <Grid item>
               <Link href="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
@@ -133,8 +135,9 @@ function Login(props) {
             </Grid>
           </Grid>
         </form>
+        <Logo />
       </div>
-      
+ 
     </Container>
   );
 }
