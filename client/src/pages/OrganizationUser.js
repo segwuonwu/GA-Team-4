@@ -1,10 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
-import { Typography, Button, List } from "@material-ui/core";
+import { Typography, Button, List, Grid } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import EventSearchItem from "../Components/EventSearchItem";
 import ErrorMessage from "../Components/ErrorMessage";
 
+const useStyles = makeStyles(theme => ({
+  eventList: {
+    color: theme.palette.primary.dark,
+    fontWeight: "bold",
+    width: "45%,",
+    margin: "1em 0 0 28%",
+  },
+  showOrganization: {
+    color: theme.palette.secondary.dark,
+    fontWeight: "bold"
+  },
+  centered: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "1em"
+  },
+  titleOrganization: {
+    textAlign: "center",
+    fontWeight: "bold",
+    marginTop: "1em"
+  },
+  font: {
+    color: "black"
+  }
+
+}))
+
 function OrganizationUser(props) {
+
+  const classes = useStyles();
 
   const [organization, setOrganization] = useState([]);
   const [events, setEvents] = useState([]);
@@ -81,11 +111,16 @@ function OrganizationUser(props) {
   const showOrganization = () => {
     if (organization) {
       return (
-        <div>
-          <Typography>{organization.orgname ? organization.orgname : "Organization Title"}</Typography>
-          <Typography>{organization.email ? organization.email : "Organization Email"}</Typography>
-          <Typography>Volunteers Following: { organization.users ? organization.users.length : 0 }</Typography>
+        <div className={classes.showOrganization}>
+          <Grid container className={classes.centered} spacing={3}>
+            
+            
+          <Grid item><Typography variant="h5">{organization.orgname ? organization.orgname : "Organization"} </Typography> </Grid>
+          <Grid item><Typography variant="h5" className={classes.font}>{organization.email ? organization.email : "No Email"}</Typography> </Grid>
+          <Grid item><Typography variant="h5" className={classes.font}>Volunteers Following: { organization.users ? organization.users.length : 0 }</Typography></Grid>
           <Button onClick={() => followOrganization()}>Follow</Button>
+          </Grid>
+          <Typography className={classes.titleOrganization} variant="h4">Organizations</Typography>
           {eventList()}
         </div>
       )
