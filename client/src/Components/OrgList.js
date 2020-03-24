@@ -14,9 +14,6 @@ const useStyles = makeStyles(theme =>({
     marginTop: "1em",
     marginLeft: "1em",
   },
-  body: {
-    alignItems: 'center',
-  }
 }));
 
 function OrgList(props) {
