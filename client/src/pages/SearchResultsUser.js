@@ -29,6 +29,7 @@ function SearchResultsUser(props) {
               setError ("Unable to connect to database");
               return;
             } 
+            console.log(response);
             return response.json();
           }).then(events => {
             setResults(events);

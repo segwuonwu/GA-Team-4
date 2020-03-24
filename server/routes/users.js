@@ -29,6 +29,7 @@ router.get('/events/:id', (req, res) => {
     }).catch(err => res.send({message: 'Error in getting event', err}))
 });
 
+
 router.post('/events/:id', (req, res) => {
     // First get the user from the DB using the id in req.user
     //Event Id is in req.params.id
