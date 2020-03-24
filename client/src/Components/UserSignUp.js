@@ -7,13 +7,14 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Redirect } from 'react-router-dom';
+import volunteerImg from "../assets/gardening.jpg";
 
   const useStyles = makeStyles((theme) => ({
     root: {
       height: '90vh',
     },
     image: {
-      backgroundImage: "url(/static/media/gardening.64d13e40.jpg)",
+      backgroundImage: `url(${volunteerImg})`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       backgroundPosition: 'center'
