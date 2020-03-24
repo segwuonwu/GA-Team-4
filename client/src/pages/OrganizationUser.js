@@ -1,10 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { Typography, Button, List } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import EventSearchItem from "../Components/EventSearchItem";
 import ErrorMessage from "../Components/ErrorMessage";
 
+const useStyles = makeStyles(theme => ({
+  eventList: {
+    color: theme.palette.primary.dark,
+    fontWeight: "bold",
+    width: "45%,",
+    margin: "1em 0 0 28%",
+  },
+  showOrganization: {
+    marginTop: "1em",
+    marginLeft: "2em",
+    background: "#eee",
+    borderRadius: "10px",
+    minHeight: "64.5vh"
+  }
+}))
+
 function OrganizationUser(props) {
+
+  const classes = useStyles();
 
   const [organization, setOrganization] = useState([]);
   const [events, setEvents] = useState([]);
@@ -82,8 +101,8 @@ function OrganizationUser(props) {
     if (organization) {
       return (
         <div>
-          <Typography>{organization.orgname ? organization.orgname : "Organization Title"}</Typography>
-          <Typography>{organization.email ? organization.email : "Organization Email"}</Typography>
+          <Typography>{organization.orgname ? organization.orgname : "Organization"}</Typography>
+          <Typography>{organization.email ? organization.email : "No Email"}</Typography>
           <Typography>Volunteers Following: { organization.users ? organization.users.length : 0 }</Typography>
           <Button onClick={() => followOrganization()}>Follow</Button>
           {eventList()}
