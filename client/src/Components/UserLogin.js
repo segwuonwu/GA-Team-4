@@ -6,7 +6,6 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import handsImg from "../assets/hands.jpg";
 
@@ -153,11 +152,7 @@ function Login(props) {
           </Grid>
         </form>
       </div>
-<<<<<<< HEAD
     </Grid>
-=======
-      </Grid>
->>>>>>> 709e0cbb4367f868b299e53a96f3cd39fd311d07
     </Grid>
   );
 }
