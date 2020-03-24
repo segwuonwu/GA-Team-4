@@ -16,6 +16,13 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold",
     marginTop: "1em",
     marginLeft: "1em"
+  }, 
+  eventList: {
+    marginTop: "1em",
+    marginLeft: "2em",
+    background: "#eee",
+    borderRadius: "10px",
+    minHeight: "64.5vh"
   }
 }));
 
@@ -100,7 +107,7 @@ function Home(props) {
 
   const eventList = () => {
     if (events) {
-      return <EventList listType="event" events={events} />
+      return <EventList events={events} />
     } else {
       return <ErrorMessage error={error.events} />
     }
@@ -108,7 +115,7 @@ function Home(props) {
 
   const organizationList = () => {
     if (organizations) {
-      return <OrgList listType="organization" organizations={organizations} />
+      return <OrgList organizations={organizations} />
     } else {
       return <ErrorMessage error={error.organizations} />
     }
@@ -126,7 +133,7 @@ function Home(props) {
         {props.user ? props.user.firstname : "User"}'s Dashboard
       </Typography>
       <Grid container className={classes.root}>
-        <Grid item md={3}>
+        <Grid item md={3}  className={classes.eventList} >
           { eventList() }
         </Grid>
         <Grid item md={8}>

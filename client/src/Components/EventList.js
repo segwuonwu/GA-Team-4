@@ -5,15 +5,8 @@ import EventHomeItem from "./EventHomeItem";
 //host, date, time, where, # of volunteers
 
 const useStyles = makeStyles(theme => ({
-  list: {
-    marginLeft: "2em",
-    background: "#eee",
-    borderRadius: "10px",
-    minHeight: "64.5vh"
-  },
   header: {
     paddingTop: "1.5em",
-    marginTop: "1.5em",
     marginLeft: "1em",
     fontWeight: "bold",
     color: theme.palette.secondary.dark
@@ -23,8 +16,7 @@ const useStyles = makeStyles(theme => ({
 function EventList(props) {
   const classes = useStyles();
       return(
-        <div
-          className={classes.list}>
+        <div>
           <Typography
             variant="h5"
             className={classes.header}>
