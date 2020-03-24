@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { Typography, Button, List } from "@material-ui/core";
-import EventItem from "../Components/EventComponent";
+import EventSearchItem from "../Components/EventSearchItem";
 import ErrorMessage from "../Components/ErrorMessage";
 
 function OrganizationUser(props) {
@@ -73,7 +73,7 @@ function OrganizationUser(props) {
         <List>
         {
           events.map((item, index) => {
-            return <EventItem event={item} key={index} />
+            return <EventSearchItem event={item} key={index} />
           })
         }
         </List>
