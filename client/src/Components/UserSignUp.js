@@ -9,9 +9,19 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Redirect } from 'react-router-dom';
 
-  const useStyles = makeStyles(theme => ({
+
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      height: '100vh',
+    },
+    image: {
+      backgroundImage: ('../assets/gardening.jpg'),
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    },
     paper: {
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(8,4),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -79,11 +89,11 @@ const SignUp = props => {
     }
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" class="signupform">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          New User Sign up
+      <div classes={{paper: classes.paper, image: classes.image}}>     
+        <Typography component="h1" variant="h4" gutterBottom>
+         <br></br> New User Registration
         </Typography>
         <span className="red">{message}</span>
         <form className={classes.form} onSubmit={handleSubmit}>
