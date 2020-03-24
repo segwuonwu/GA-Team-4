@@ -13,11 +13,8 @@ const useStyles = makeStyles(theme => ({
     margin: "1em 0 0 28%",
   },
   showOrganization: {
-    marginTop: "1em",
-    marginLeft: "2em",
-    background: "#eee",
-    borderRadius: "10px",
-    minHeight: "64.5vh"
+    color: theme.palette.secondary.dark,
+    fontWeight: "bold"
   }
 }))
 
@@ -100,7 +97,7 @@ function OrganizationUser(props) {
   const showOrganization = () => {
     if (organization) {
       return (
-        <div>
+        <div className={classes.ShowOrganization}>
           <Typography>{organization.orgname ? organization.orgname : "Organization"}</Typography>
           <Typography>{organization.email ? organization.email : "No Email"}</Typography>
           <Typography>Volunteers Following: { organization.users ? organization.users.length : 0 }</Typography>
