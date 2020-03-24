@@ -4,9 +4,11 @@ import EditProfile from '../Components/EditProfile';
 
 function EditProfileUser(props) {
 
-  if (!props.user) {
-    return <Redirect to="/" />
-  }
+  setTimeout(() => {
+    if (!props.user) {
+      return <Redirect to='/' />
+    }
+  }, 5000);
 
   return (
     <div>
