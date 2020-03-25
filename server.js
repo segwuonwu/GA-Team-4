@@ -41,7 +41,7 @@ app.get('*', (req, res) => {
 });
 
 // Listen
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 8000, () => {
   rowdyResults.print()
   //console.log(`🎧 You're listening to the smooth sounds of port ${process.env.PORT || 3000} ☕️`)
 });
