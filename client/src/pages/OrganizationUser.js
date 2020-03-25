@@ -116,9 +116,9 @@ function OrganizationUser(props) {
           <Grid item><Typography variant="h5">{organization.orgname ? organization.orgname : "Organization"} </Typography> </Grid>
           <Grid item><Typography variant="h5" className={classes.font}>{organization.email ? organization.email : "No Email"}</Typography> </Grid>
           <Grid item><Typography variant="h5" className={classes.font}>Volunteers Following: { organization.users ? organization.users.length : 0 }</Typography></Grid>
-          <Button onClick={() => followOrganization()}>Follow</Button>
+            <Button onClick={() => followOrganization()} variant="contained" color="secondary">Follow</Button>
           </Grid>
-          <Typography className={classes.titleOrganization} variant="h4">Organizations</Typography>
+          <Typography className={classes.titleOrganization} variant="h4">Organization Events</Typography>
           {eventList()}
         </div>
       )
