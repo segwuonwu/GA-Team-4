@@ -120,7 +120,7 @@ function Login(props) {
                 name="email"
                 onChange={e => setEmail(e.target.value)}
               />
-              </Grid>
+            </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"

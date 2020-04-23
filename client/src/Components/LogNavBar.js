@@ -32,4 +32,3 @@ function LogNavBar(props) {
   }
   
   export default LogNavBar;
-
